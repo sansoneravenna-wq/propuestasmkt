@@ -76,6 +76,7 @@ textarea{resize:vertical;min-height:72px}
 .it.on{border-color:var(--o)}
 .it-h b{display:block;font-size:16.5px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
 .it-h small{display:block;color:var(--mut);font-size:13px;line-height:1.45;margin-top:6px}
+.xn{font-style:normal;font-weight:600;color:#12803a}
 .it-pr{display:inline-block;margin-top:9px;font-size:13px;font-weight:700;color:var(--o2);background:#fff3ec;border-radius:99px;padding:4px 12px}
 .it-st{font-size:12px;font-weight:600;color:#9a9aa2;margin-top:12px}
 .it-st::after{content:"Sin seleccionar"}
@@ -879,7 +880,13 @@ var S=base();
 try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);for(var k in o)S[k]=o[k];}}catch(e){}
 S.moneda='UYU';S.tc='';
 function save(){if(PV)return;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function all(){return CATALOG.concat(S.custom)}
+function xDefs(){
+  var ids={},k;
+  if(PV&&PVSRC&&PVSRC.items)for(k in PVSRC.items){if(!PVSRC.items[k].extra&&!/~x$/.test(k))ids[k]=1}
+  for(k in S.items){if(/~x$/.test(k))ids[k.slice(0,-2)]=1}
+  return CATALOG.filter(function(d){return ids[d.id]&&(d.calc||d.precio!=null)&&!d.lock&&!d.mode&&!d.gratis}).map(function(d){var c={},p;for(p in d)c[p]=d[p];c.id=d.id+'~x';c.xof=d.id;return c});
+}
+function all(){return CATALOG.concat(S.custom).concat(xDefs())}
 function item(def){
   var it=S.items[def.id];
   if(!it){it=S.items[def.id]={on:!!def.custom,cuando:'',cant:1,precio:def.precio||'',mode:def.mode||'valor',cond:def.cond||'',gratis:!!def.gratis,ilim:!!def.ilim,cur:'UYU'}}
@@ -949,7 +956,7 @@ function calcOut(def,it){
 function applyOut(box,def,it){var o=calcOut(def,it);box.querySelectorAll('[data-out]').forEach(function(e){e.textContent=o[e.getAttribute('data-out')]})}
 function calcHTML(def){
   var it=item(def), CUR=[['USD','USD'],['UYU','$']], o=calcOut(def,it), L='', R='';
-  L+='<div class="cico" aria-hidden="true"><img src="'+STAR_W+'" alt=""></div><div class="it-h"><b>'+esc(def.n)+'</b><small>'+esc(def.d)+'</small></div>';
+  L+='<div class="cico" aria-hidden="true"><img src="'+STAR_W+'" alt=""></div><div class="it-h"><b>'+esc(def.n)+(def.xof?' · adicional':'')+'</b><small>'+(def.xof?'<i class="xn">Además de lo que ya aporta RedTickets.</i> ':'')+esc(def.d)+'</small></div>';
   if(def.calc==='tier'){
     L+='<table class="ctab"><thead><tr><th>'+def.th+'</th><th class="pr">Precio</th></tr></thead><tbody>'+def.tier.steps.map(function(n){
       return '<tr'+(Number(it.dest)===n?' class="sel"':'')+'><td><i>★</i>'+n.toLocaleString('es-UY')+' '+def.unit+'</td><td class="pr">'+mon(tierPrice(def,n),'UYU')+'</td></tr>'}).join('')+'</tbody></table>';
@@ -988,7 +995,7 @@ function itemHTML(def){
   var h='<div class="it'+(it.on?' on':'')+'" data-id="'+def.id+'">';
   h+='<div class="it-h">';
   if(def.custom) h+='<b>'+(esc(def.n)||'Acción personalizada')+'</b><small>Editá el nombre y el detalle abajo.</small>';
-  else h+='<b>'+esc(def.n)+'</b><small>'+esc(def.d)+'</small>';
+  else h+='<b>'+esc(def.n)+(def.xof?' · adicional':'')+'</b><small>'+(def.xof?'<i class="xn">Además de lo que ya aporta RedTickets.</i> ':'')+esc(def.d)+'</small>';
   h+='<span class="it-pr" data-price>'+esc(priceTxt(def))+'</span></div><div class="it-st"></div><div class="it-f">';
   if(def.custom){
     h+='<label class="w2"><span>Nombre de la acción</span><input type="text" data-c="n" value="'+esc(def.n)+'"></label>';
@@ -1036,7 +1043,7 @@ function buildForm(){
     return '<div class="it on rtc"><div class="it-h"><b>'+o.name+'</b>'+(o.detail?'<small>'+o.detail+'</small>':'')+'<span class="it-pr">'+esc(o.txt)+(o.qty!==1&&o.qty!=='—'?' · '+esc(typeof o.qty==='number'?'× '+o.qty:o.qty):'')+'</span></div><span class="rtag">'+(item(x).mode==='canje'?'Por canje':item(x).mode==='coord'?'A coordinar':'La asume RedTickets')+'</span></div>'}).join('')+'</div>';
   function free(x){return !(PV&&RT.indexOf(x)>=0)}
   GROUPS.forEach(function(g){
-    var L=CATALOG.filter(function(x){return x.g===g[0]&&free(x)});if(!L.length)return;
+    var L=CATALOG.filter(function(x){return x.g===g[0]&&free(x)}).concat(xDefs().filter(function(x){return x.g===g[0]}));if(!L.length)return;
     a+='<h3 class="e-grp">'+g[1]+'</h3><div class="'+(g[0]==='calc'?'e-grid2':'e-grid')+'">';
     L.forEach(function(x){a+=itemHTML(x)});
     a+='</div>';
@@ -1050,7 +1057,7 @@ function buildForm(){
   v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['inc','Aclarar "IVA inc."'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
-    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones','Acciones adicionales','Sumá las adicionales <em>que quieras</em>','Además del aporte de RedTickets, podés agregar otras acciones. Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>que asume RedTickets</em>','Todo lo que agregues acá lo asume RedTickets: el productor lo ve en verde, sin costo, y no lo puede modificar. Después, desde el link, puede sumar las adicionales que quiera, que sí tienen costo.',a))+
+    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones','Acciones adicionales','Sumá las adicionales <em>que quieras</em>','Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>que asume RedTickets</em>','Todo lo que agregues acá lo asume RedTickets: el productor lo ve en verde, sin costo, y no lo puede modificar. Después, desde el link, puede sumar las adicionales que quiera, que sí tienen costo.',a))+
     sec('valores','Paso 3','Valores y <em>total</em>','Cómo se muestra el total de la propuesta.',v)+
     '<datalist id="cuando">'+CUANDO.map(function(c){return '<option value="'+c+'">'}).join('')+'</datalist>';
   drawLogoPrev();
@@ -1135,6 +1142,7 @@ function rowInfo(d){
     if(nd>1)unit=mon(Math.round(val/nd),it.cur)+' por día (estimado)';
   }
   if(d.calc==='dest')name=it.pos==2?'Destacado Secundario':it.pos==3?'Destacado · 3ª Posición':'Destacado Principal';
+  if(d.xof)name+=' · adicional';
   if(d.perday)qt=q+(q===1?' día':' días');
   if(d.tier)extra=' '+Number(it.dest).toLocaleString('es-UY')+' '+(d.unit||'destinatarios')+' por envío.';
   if(d.calc!=='pauta'&&q>1)unit=mon(it.precio,it.cur)+(d.tier?' por envío':d.perday?' por día':' c/u');
