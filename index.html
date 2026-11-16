@@ -324,6 +324,24 @@ body.loading #ed,body.loading .sbar{display:none}
 .adt a{color:var(--o2);font-weight:600;text-decoration:none}
 .adh{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:19px;letter-spacing:-.03em;margin:22px 0 4px}
 .adw{overflow-x:auto}
+.hbtn{display:flex;align-items:center;gap:10px}
+.icob{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex:none}
+.icob:hover{border-color:#c9c9cf}
+.drw{position:fixed;inset:0;z-index:60}
+.drw-bg{position:absolute;inset:0;background:rgba(14,14,18,.45)}
+.drw-p{position:absolute;top:0;right:0;bottom:0;width:min(460px,100%);background:#fff;padding:22px 22px 30px;overflow-y:auto;box-shadow:-10px 0 40px rgba(0,0,0,.18)}
+.drw-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+.drw-h b{display:block;font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:21px;letter-spacing:-.03em}
+.drw-h span{font-size:12px;color:var(--mut)}
+.drw-off{background:#f4f4f6;border-radius:16px;padding:16px;color:#55555d;font-size:13.5px;margin:0}
+body.api-on .drw-off{display:none}
+.adc{background:#f4f4f6;border-radius:16px;padding:14px 16px;margin-top:8px}
+.adc .t{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.adc .t b{font-size:14.5px;font-weight:600}
+.adc .t i{font-style:normal;font-weight:700;color:var(--o2);white-space:nowrap}
+.adc p{margin:4px 0 0;font-size:12.5px;color:#55555d;line-height:1.45;word-break:break-word}
+.adc a{color:var(--o2);font-weight:600;text-decoration:none}
+.adc .btn{margin-top:10px}
 /* overlay */
 .ov{position:fixed;inset:0;background:rgba(255,255,255,.8);display:none;align-items:center;justify-content:center;z-index:9;font-weight:600}
 .ov.on{display:flex}
@@ -333,8 +351,8 @@ body.loading #ed,body.loading .sbar{display:none}
 <div id="ed">
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
-    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a class="api-only only-ed" href="#admin">Solicitudes</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
-    <button class="btn pri" id="gen" type="button">Generar nueva propuesta</button>
+    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
+    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button">Generar nueva propuesta</button></div>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
     <span class="tagp">Marketing · uso interno</span>
@@ -361,13 +379,6 @@ body.loading #ed,body.loading .sbar{display:none}
     </div>
     <main class="stage" id="stage"><div class="pages" id="pages"></div></main>
   </div></section>
-  <section class="e-sec api-only only-ed" id="admin"><div class="e-w">
-    <div class="e-head"><span class="pill">Equipo de Marketing</span><h2>Propuestas y <em>solicitudes</em></h2><p>Las propuestas guardadas con link corto y lo que cada productor envió a partir de ellas.</p></div>
-    <div class="e-card" style="padding-bottom:26px">
-      <div class="lk"><input type="password" class="sk" autocomplete="off" placeholder="Clave del equipo" aria-label="Clave del equipo" style="max-width:260px"><button class="btn pri" id="ad-go" type="button">Ver propuestas y solicitudes</button></div>
-      <div id="ad-out"></div>
-    </div>
-  </div></section>
   <section class="e-sec" id="guia-sec"><div class="e-w">
     <div class="e-head"><span class="pill">Recursos</span><h2>Guía de Marketing Digital <em>para Eventos</em></h2><p>Todo lo que necesitás saber para llenar tu evento con marketing digital.</p></div>
     <div class="e-card" style="padding-bottom:26px">
@@ -381,6 +392,15 @@ body.loading #ed,body.loading .sbar{display:none}
   <span class="msg" id="msg"></span>
   <div class="sb-btn"><button class="btn gh" id="nueva" type="button">Vaciar selección</button><button class="btn or" id="pdf" type="button">Descargar PDF</button><a class="btn only-pv" href="#solicitud">Enviar solicitud</a></div>
 </div></div>
+<div class="drw" id="drw" hidden>
+  <div class="drw-bg" id="drw-bg"></div>
+  <aside class="drw-p" role="dialog" aria-modal="true" aria-label="Propuestas y solicitudes">
+    <div class="drw-h"><div><b>Propuestas y solicitudes</b><span>Equipo de Marketing</span></div><button type="button" class="icob" id="drw-x" aria-label="Cerrar">✕</button></div>
+    <p class="drw-off">El guardado de propuestas todavía no está activado en Cloudflare. Cuando esté, acá vas a ver las propuestas creadas con link corto y lo que envió cada productor.</p>
+    <div class="api-only"><div class="lk"><input type="password" class="sk" autocomplete="off" placeholder="Clave del equipo" aria-label="Clave del equipo"><button class="btn pri" id="ad-go" type="button">Ver</button></div></div>
+    <div id="ad-out"></div>
+  </aside>
+</div>
 <div id="pv"></div>
 <template id="guia-tpl"><p class="guide-meta"><strong>RedTickets · Guía Oficial · v1.0 · 2026</strong> — <em>Acá pasan cosas.</em></p>
 
@@ -1500,7 +1520,12 @@ $('sl-copy').addEventListener('click',function(){
   var v=$('sl-out').value;if(!v){$('sl-note').textContent='Primero tocá "Crear link corto".';return}
   try{navigator.clipboard.writeText(v).then(function(){say('Link corto copiado.')},function(){$('sl-out').select()})}catch(e){$('sl-out').select()}
 });
-function loadState(o,msg){var keep={base:S.base,logo:S.logo};S=fromObj(o);S.base=keep.base;S.logo=keep.logo;buildForm();update();say(msg);window.scrollTo(0,0)}
+function drw(open){$('drw').hidden=!open;document.body.style.overflow=open?'hidden':'';if(open){var k=document.querySelector('#drw .sk');if(API_READY&&EDIT_KEY)$('ad-go').click();else if(k&&API_READY)k.focus()}}
+$('ad-open').addEventListener('click',function(){drw(true)});
+$('drw-x').addEventListener('click',function(){drw(false)});
+$('drw-bg').addEventListener('click',function(){drw(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('drw').hidden)drw(false)});
+function loadState(o,msg){drw(false);var keep={base:S.base,logo:S.logo};S=fromObj(o);S.base=keep.base;S.logo=keep.logo;buildForm();update();say(msg);window.scrollTo(0,0)}
 $('ad-go').addEventListener('click',function(){
   var out=$('ad-out'), btn=this;
   if(!EDIT_KEY){out.innerHTML='<p>Escribí la clave del equipo.</p>';return}
@@ -1508,11 +1533,11 @@ $('ad-go').addEventListener('click',function(){
   api('list').then(function(j){
     var P=(j.proposals||[]).sort(function(a,b){return (b.at||0)-(a.at||0)}), R=(j.requests||[]).sort(function(a,b){return (b.at||0)-(a.at||0)});
     var h='<div class="adh">Solicitudes de productores ('+R.length+')</div>';
-    h+=R.length?'<div class="adw"><table class="adt"><thead><tr><th>Fecha</th><th>Propuesta</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Vía</th><th>Total</th><th></th></tr></thead><tbody>'+R.map(function(x){
-      return '<tr><td>'+esc(fechaHora(x.at))+'</td><td>'+esc(x.slug)+'</td><td>'+esc(x.name||'—')+'</td><td>'+esc(x.phone||'—')+'</td><td>'+esc(x.email||'—')+'</td><td>'+esc(x.via||'')+'</td><td><b>'+esc(x.total||'')+'</b></td><td><button type="button" class="btn sm" data-ls="'+esc(x.id)+'">Cargar</button></td></tr>'}).join('')+'</tbody></table></div>':'<p style="color:var(--mut)">Todavía no hay solicitudes enviadas desde un link corto.</p>';
+    h+=R.length?R.map(function(x){
+      return '<div class="adc"><div class="t"><b>'+esc(x.name||'Sin nombre')+'</b><i>'+esc(x.total||'')+'</i></div><p>'+esc(fechaHora(x.at))+' · propuesta '+esc(x.slug)+(x.via?' · por '+esc(x.via):'')+'</p><p>'+esc(x.event||'')+'</p><p>'+[x.phone,x.email].filter(Boolean).map(esc).join(' · ')+'</p><button type="button" class="btn sm" data-ls="'+esc(x.id)+'">Cargar en el generador</button></div>'}).join(''):'<p style="color:var(--mut);font-size:13px">Todavía no hay solicitudes enviadas desde un link corto.</p>';
     h+='<div class="adh">Propuestas guardadas ('+P.length+')</div>';
-    h+=P.length?'<div class="adw"><table class="adt"><thead><tr><th>Actualizada</th><th>Link</th><th>Evento</th><th>Cliente</th><th>Total</th><th></th></tr></thead><tbody>'+P.map(function(x){
-      return '<tr><td>'+esc(fechaHora(x.at))+'</td><td><a href="/p/'+esc(x.slug)+'" target="_blank" rel="noopener">/p/'+esc(x.slug)+'</a></td><td>'+esc(x.evento||'—')+'</td><td>'+esc(x.cliente||'—')+'</td><td><b>'+esc(x.total||'')+'</b></td><td><button type="button" class="btn sm" data-lp="'+esc(x.slug)+'">Cargar</button></td></tr>'}).join('')+'</tbody></table></div>':'<p style="color:var(--mut)">Todavía no hay propuestas guardadas.</p>';
+    h+=P.length?P.map(function(x){
+      return '<div class="adc"><div class="t"><b>'+esc(x.evento||x.slug)+'</b><i>'+esc(x.total||'')+'</i></div><p>'+esc(x.cliente||'Sin cliente')+' · actualizada '+esc(fechaHora(x.at))+'</p><p><a href="/p/'+esc(x.slug)+'" target="_blank" rel="noopener">'+esc(location.host)+'/p/'+esc(x.slug)+'</a></p><button type="button" class="btn sm" data-lp="'+esc(x.slug)+'">Cargar en el generador</button></div>'}).join(''):'<p style="color:var(--mut);font-size:13px">Todavía no hay propuestas guardadas.</p>';
     h+='<p style="color:var(--mut);font-size:12px;margin:14px 0 0">"Cargar" abre esa propuesta o solicitud en el generador, reemplazando lo que tengas armado ahora.</p>';
     out.innerHTML=h;
   }).catch(function(e){out.innerHTML='<p>'+apiErr(e)+'</p>'}).then(function(){btn.disabled=false});
