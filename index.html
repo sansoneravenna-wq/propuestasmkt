@@ -280,6 +280,29 @@ table.t{width:100%;border-collapse:collapse}
 .tot .big{font-size:2.6em}
 .tot .tn{margin:.55em 0 0;font-size:.84em;color:#a9a9b3}
 .tot .tn b{color:#fff;font-weight:600}
+.guia{margin-top:20px;border:1px solid #e6e6ea;border-radius:20px;padding:22px;max-height:72vh;overflow:auto;font-size:14px;line-height:1.6;color:#44444c}
+.guia h3{display:block;background:none;text-transform:none;letter-spacing:-.02em;font:500 21px "Inter Tight",Inter,sans-serif;color:#17171a;padding:0;border-radius:0;margin:34px 0 12px}
+.guia h5{font-size:12.5px;color:#e05a00;text-transform:uppercase;letter-spacing:.04em;margin:22px 0 8px}
+.guia p{margin:0 0 12px}
+.guia ul,.guia ol{margin:0 0 12px;padding-left:20px}
+.guia li{margin-bottom:5px}
+.guia strong{color:#17171a}
+.guia table{width:100%;border-collapse:collapse;margin:0 0 18px;font-size:13px}
+.guia th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#9a9aa2;padding:0 10px 9px 0;border-bottom:2px solid #0e0e12}
+.guia td{padding:9px 10px 9px 0;border-bottom:1px solid #e6e6ea;vertical-align:top}
+.guia code{background:#f0f0f3;padding:2px 6px;border-radius:5px;font-size:12px;color:#17171a;word-break:break-word}
+.guia pre{background:#0e0e12;color:#e6e6ea;padding:14px 16px;border-radius:14px;font-size:12px;overflow:auto;margin:0 0 16px}
+.guia pre code{background:none;padding:0;color:inherit}
+.guia .wa-note{font-size:13px;background:#f4f4f6;border-radius:14px;padding:14px 16px;margin:0 0 16px}
+.guia .guide-toc{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:7px 18px}
+.guia .guide-toc a{color:#e05a00;font-weight:600;text-decoration:none}
+.guia .guide-meta{color:#9a9aa2;font-size:12.5px}
+.guia a{color:#e05a00}
+.guia .guide-toc{grid-template-columns:1fr 1fr}
+@media(min-width:640px){.guia .guide-toc{grid-template-columns:1fr 1fr}}
+.grow2{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.grow2 b{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.03em}
+.grow2 p{margin:4px 0 0;color:#55555d;font-size:13.5px}
 /* overlay */
 .ov{position:fixed;inset:0;background:rgba(255,255,255,.8);display:none;align-items:center;justify-content:center;z-index:9;font-weight:600}
 .ov.on{display:flex}
@@ -289,7 +312,7 @@ table.t{width:100%;border-collapse:collapse}
 <div id="ed">
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
-    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
+    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
     <button class="btn pri" id="gen" type="button">Generar nueva propuesta</button>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
@@ -309,6 +332,13 @@ table.t{width:100%;border-collapse:collapse}
       <small id="lk-note"></small>
     </div>
     <main class="stage" id="stage"><div class="pages" id="pages"></div></main>
+  </div></section>
+  <section class="e-sec" id="guia-sec"><div class="e-w">
+    <div class="e-head"><span class="pill">Recursos</span><h2>Guía de Marketing Digital <em>para Eventos</em></h2><p>Todo lo que necesitás saber para llenar tu evento con marketing digital.</p></div>
+    <div class="e-card" style="padding-bottom:26px">
+      <div class="grow2"><div><b>La guía completa</b><p>Glosario, métricas, Meta Ads, Google Ads, X/LinkedIn/TikTok, GA4, Google Tag Manager, UTMs, herramientas complementarias y nuestro paso a paso.</p></div><button class="btn pri" id="guia-btn" type="button" aria-expanded="false">Ver guía completa</button></div>
+      <div class="guia" id="guia" hidden></div>
+    </div>
   </div></section>
 </div>
 <div class="sbar" id="sbar"><div class="e-w sb-in">
@@ -1407,7 +1437,7 @@ $('lk-copy').addEventListener('click',function(){
 var PVCSS='.pv .alz{display:block}.pv .alz ul{justify-content:flex-start}.pv .blog b{color:#fff}.pv .firma{grid-template-columns:1fr}.pv .sig{background:#fff}.pv .tot{padding:20px 22px}';
 var PVCSS2='.pv{min-height:100vh}.pv .pvbar{position:sticky;top:0;z-index:5;background:rgba(244,244,246,.96);border-bottom:1px solid #e6e6ea}.pv .pvbar>div{max-width:980px;margin:0 auto;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}.pv .pvbar img{height:24px;display:block}'+
 '.pv .pvb{display:flex;gap:6px}.pv .pvb button{border:1px solid #0e0e12;border-radius:99px;padding:9px 15px;font:600 13px Inter,sans-serif;cursor:pointer;background:#0e0e12;color:#fff}.pv .pvb button.s{background:#fff;color:#17171a;border-color:#e6e6ea}.pv .pvb button[disabled]{opacity:.6}'+
-'.pv{min-height:0;background:transparent;margin-top:66px}.pv .wrap{max-width:1180px;padding:0 20px}.pv .cta{scroll-margin-top:70px}'+
+'.pv{min-height:0;background:transparent;margin-top:56px}.pv .wrap{max-width:1180px;padding:0 20px}.pv .cta{scroll-margin-top:70px}'+
 '.pv h2.l{margin-left:0;margin-right:0;max-width:none;font-size:clamp(26px,5vw,34px)}.pv .lead.l{margin-left:0;max-width:640px}.pv .obadge{display:inline-block;background:#e6e6ea;color:#6b6b73;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:5px 12px;border-radius:99px}'+
 '.pv label.f{font-size:12px;color:#6b6b73;margin-bottom:14px}.pv label.f input,.pv label.f textarea{border-radius:14px;padding:13px 15px;font-size:14.5px}.pv label.f textarea{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;min-height:88px}'+
 '.pv .pbtn{border:1.5px solid #FF6600;background:#FF6600;color:#fff;border-radius:99px;padding:13px 24px;font:600 14px Inter,sans-serif;cursor:pointer}.pv .pbtn.s{background:#fff;color:#17171a;border-color:#e6e6ea;flex:none}.pv .pbtn.g{background:transparent;border-color:rgba(255,255,255,.4)}.pv .pnote{font-size:13px;color:#6b6b73;margin:12px 0 0;min-height:18px}.pv .pnote a{color:#e05a00}'+
@@ -1445,7 +1475,6 @@ function renderPV(){
     '<label class="f"><span>Google Tag Manager — código Head</span><textarea id="px-head" placeholder="Pegá acá el snippet que va en el &lt;head&gt;"></textarea></label>'+
     '<label class="f"><span>Google Tag Manager — código Body</span><textarea id="px-body" placeholder="Pegá acá el snippet que va en el &lt;body&gt;"></textarea></label>'+
     '<button type="button" class="pbtn" id="px-send">Enviar píxeles por email</button><p class="pnote" id="px-msg" role="status"></p></div></div>';
-  h+='<div class="sheet"><div class="in"><div class="grow"><div><span class="pill">Recursos</span><h2 class="l">Guía de Marketing Digital <em>para Eventos</em></h2><p class="lead l">Glosario, métricas, Meta Ads, Google Ads, X/LinkedIn/TikTok, GA4, Google Tag Manager, UTMs y nuestro paso a paso.</p></div><button type="button" class="pbtn s" id="guia-btn" aria-expanded="false">Ver guía completa</button></div><div class="guia" id="guia" hidden></div></div></div>';
   h+='<div class="cta" id="solicitud"><span class="pill">Tu solicitud</span><h2>Revisá tu propuesta <em>y enviala</em></h2><p>Este es el resumen de lo que quedó armado. Completá tus datos y enviá el detalle por email, o escribinos por WhatsApp para coordinarlo.</p>'+
     '<div class="cfields"><label class="f"><span>Nombre y apellido</span><input type="text" id="rq-name" placeholder="Ej: Nombre Apellido"></label>'+
     '<label class="f"><span>Productora / Evento</span><input type="text" id="rq-event" value="'+esc([S.cliente,S.evento].filter(Boolean).join(' — '))+'"></label>'+
@@ -1477,14 +1506,15 @@ function renderPV(){
     if(!m&&!hd&&!bd){msg.textContent='Completá al menos un campo antes de enviar.';return}
     go('mailto:marketing@redtickets.uy?subject='+encodeURIComponent('Píxeles de seguimiento'+(e?' · '+e:''))+'&body='+encodeURIComponent('Evento: '+(e||'A confirmar')+'\n\nID Píxel de Meta: '+(m||'-')+'\n\nGTM Head:\n'+(hd||'-')+'\n\nGTM Body:\n'+(bd||'-')),msg,'abrir el correo');
   });
-  $('guia-btn').addEventListener('click',function(){
-    var g=$('guia'),open=g.hidden;if(open&&!g.firstChild)g.appendChild($('guia-tpl').content.cloneNode(true));
-    g.hidden=!open;this.setAttribute('aria-expanded',String(open));this.textContent=open?'Ocultar guía':'Ver guía completa';
-  });
   document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
   buildForm(); update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
 }
+$('guia-btn').addEventListener('click',function(){
+  var g=$('guia'),open=g.hidden;if(open&&!g.firstChild)g.appendChild($('guia-tpl').content.cloneNode(true));
+  g.hidden=!open;this.setAttribute('aria-expanded',String(open));this.textContent=open?'Ocultar guía':'Ver guía completa';
+});
+$('guia').addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();e.stopPropagation();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
 window.addEventListener('hashchange',function(){if(/^#p=/.test(location.hash))location.reload()});
 
 var m0=location.hash.match(/^#p=([A-Za-z0-9_-]+)$/);
