@@ -65,7 +65,10 @@ textarea{resize:vertical;min-height:72px}
 .e-grid .it{display:grid;grid-template-columns:1fr 230px;column-gap:28px;align-items:center;padding:20px 24px}
 .e-grid .it>.it-h,.e-grid .it>.it-st{grid-column:1}
 .e-grid .it>.add{grid-column:2;grid-row:1/span 2;margin-top:0}
-.e-grid .it>.lockn{grid-column:1;justify-self:start}
+.e-grid .it>.rtag{justify-self:end;align-self:center;font-size:12px;font-weight:700;color:#12803a;background:#e0f5e7;border-radius:99px;padding:8px 14px;white-space:nowrap}
+.e-grid .it.rtc{border-color:#bfe6cc}
+.e-grid .it.rtc .it-pr{background:#e0f5e7;color:#12803a}
+.lockn{grid-column:1;justify-self:start}
 .e-grid .it>.it-f{grid-column:1/-1;grid-template-columns:1.3fr 90px 2.4fr;gap:10px 12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
 .e-grid .it>.it-f .row3{grid-column:auto;grid-template-columns:140px 1fr}
 .e-grid .it-st{margin-top:6px}
@@ -138,6 +141,9 @@ textarea{resize:vertical;min-height:72px}
 .csum{background:#0e0e12;color:#fff;border-radius:16px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;font-size:14px}
 .csum b{font-family:"Inter Tight",Inter,sans-serif;font-size:20px;font-weight:500;color:#ff8a3d;text-align:right}
 @media (max-width:900px){.it.calc{grid-template-columns:1fr;padding:22px}.it.calc .cr>.clab:first-child{margin-top:22px}.dgrid{grid-template-columns:1fr 1fr}.posg{grid-template-columns:1fr}}
+.rtag{justify-self:end;align-self:center;font-size:12px;font-weight:700;color:#12803a;background:#e0f5e7;border-radius:99px;padding:8px 14px;white-space:nowrap}
+.e-grid .it.rtc{border-color:#bfe6cc}
+.e-grid .it.rtc .it-pr{background:#e0f5e7;color:#12803a}
 .lockn{margin-top:12px;font-size:12px;font-weight:600;color:#55555d;background:#ececf0;border-radius:99px;padding:6px 12px;align-self:flex-start}
 .x{border:0;background:none;color:var(--mut);cursor:pointer;font-size:12px;padding:0;text-decoration:underline}
 .logo-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
@@ -159,7 +165,7 @@ textarea{resize:vertical;min-height:72px}
 #linkbox p{margin:0 0 14px;color:#55555d;font-size:13.5px}
 #lk-note{display:block;color:var(--mut);font-size:12px;margin-bottom:8px}
 @media (max-width:1000px){.e-f5,.e-f4{grid-template-columns:1fr 1fr}}
-@media (max-width:760px){.e-grid .it{display:flex;flex-direction:column;align-items:stretch;padding:20px}.e-grid .it>.add{margin-top:14px}.e-grid .it>.it-f{grid-template-columns:1fr 64px}.e-grid .it>.it-f .row3{grid-column:1/-1;grid-template-columns:130px 1fr}}
+@media (max-width:760px){.rtag{align-self:flex-start;margin-top:12px}.e-grid .it{display:flex;flex-direction:column;align-items:stretch;padding:20px}.e-grid .it>.add{margin-top:14px}.e-grid .it>.it-f{grid-template-columns:1fr 64px}.e-grid .it>.it-f .row3{grid-column:1/-1;grid-template-columns:130px 1fr}}
 @media (max-width:900px){.e-nav nav{display:none}.ehero{padding:30px 24px 32px;border-radius:26px}}
 @media (max-width:640px){.e-f2{grid-template-columns:1fr}.sb-btn .btn{padding:9px 12px;font-size:12px}.e-sec{padding-top:48px}}
 /* ---------- preview ---------- */
@@ -303,6 +309,19 @@ table.t{width:100%;border-collapse:collapse}
 .grow2{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .grow2 b{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.03em}
 .grow2 p{margin:4px 0 0;color:#55555d;font-size:13.5px}
+.api-only{display:none!important}
+body.api-on section.api-only,body.api-on div.api-only{display:block!important}
+body.api-on a.api-only{display:inline!important}
+body.is-pv .api-only.only-ed{display:none!important}
+body.loading #ed,body.loading .sbar{display:none}
+.nf{max-width:520px;margin:18vh auto;text-align:center;padding:0 24px;font-size:15px;color:#55555d}
+.nf img{height:30px;margin:0 auto 22px;display:block}
+.adt{width:100%;border-collapse:collapse;margin-top:8px;font-size:13px}
+.adt th{text-align:left;font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:#9a9aa2;padding:0 10px 8px 0;border-bottom:2px solid #0e0e12}
+.adt td{padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:middle}
+.adt a{color:var(--o2);font-weight:600;text-decoration:none}
+.adh{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:19px;letter-spacing:-.03em;margin:22px 0 4px}
+.adw{overflow-x:auto}
 /* overlay */
 .ov{position:fixed;inset:0;background:rgba(255,255,255,.8);display:none;align-items:center;justify-content:center;z-index:9;font-weight:600}
 .ov.on{display:flex}
@@ -312,7 +331,7 @@ table.t{width:100%;border-collapse:collapse}
 <div id="ed">
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
-    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
+    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a class="api-only only-ed" href="#admin">Solicitudes</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
     <button class="btn pri" id="gen" type="button">Generar nueva propuesta</button>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
@@ -327,11 +346,25 @@ table.t{width:100%;border-collapse:collapse}
     <div class="e-card" id="linkbox" hidden>
       <b class="t">Link para el productor</b>
       <p>Quien abra este link ve este mismo armador con las acciones ya marcadas como base. Puede sumar o quitar acciones y ajustar cantidades, pero no cambiar precios, y al final envía su solicitud.</p>
+      <div class="api-only" id="short-box">
+        <div class="e-f2"><label class="f"><span>Nombre del link (sale del evento)</span><input type="text" id="sl" placeholder="festival-de-verano-2027"></label>
+        <label class="f"><span>Clave del equipo</span><input type="password" class="sk" autocomplete="off" placeholder="La que definieron en Cloudflare"></label></div>
+        <div class="lk"><input type="text" id="sl-out" readonly aria-label="Link corto" placeholder="Todavía no creado"><button class="btn or" id="sl-go" type="button">Crear link corto</button><button class="btn pri" id="sl-copy" type="button">Copiar</button></div>
+        <small id="sl-note" style="display:block;color:var(--mut);font-size:12px;margin-bottom:16px">Guarda la propuesta con ese nombre. Si después la cambian, vuelvan a tocar "Crear link corto" con el mismo nombre y el link sigue siendo el mismo.</small>
+        <b style="display:block;font-size:13px;margin-bottom:8px">Link largo (no necesita guardarse)</b>
+      </div>
       <label class="f" id="base-l"><span>Dirección donde está publicado este generador</span><input type="text" id="base" placeholder="https://propuestas.tudominio.com/"></label>
       <div class="lk"><input type="text" id="lk" readonly aria-label="Link para el productor"><button class="btn pri" id="lk-copy" type="button">Copiar link</button><a class="btn" id="lk-open" target="_blank" rel="noopener">Abrir</a></div>
       <small id="lk-note"></small>
     </div>
     <main class="stage" id="stage"><div class="pages" id="pages"></div></main>
+  </div></section>
+  <section class="e-sec api-only only-ed" id="admin"><div class="e-w">
+    <div class="e-head"><span class="pill">Equipo de Marketing</span><h2>Propuestas y <em>solicitudes</em></h2><p>Las propuestas guardadas con link corto y lo que cada productor envió a partir de ellas.</p></div>
+    <div class="e-card" style="padding-bottom:26px">
+      <div class="lk"><input type="password" class="sk" autocomplete="off" placeholder="Clave del equipo" aria-label="Clave del equipo" style="max-width:260px"><button class="btn pri" id="ad-go" type="button">Ver propuestas y solicitudes</button></div>
+      <div id="ad-out"></div>
+    </div>
   </div></section>
   <section class="e-sec" id="guia-sec"><div class="e-w">
     <div class="e-head"><span class="pill">Recursos</span><h2>Guía de Marketing Digital <em>para Eventos</em></h2><p>Todo lo que necesitás saber para llenar tu evento con marketing digital.</p></div>
@@ -941,7 +974,7 @@ function calcHTML(def){
   R+='<div class="it-st"></div><div class="it-f">'+cuandoHTML(it,'w2');
   if(def.calc==='pauta')R+='<label class="w2"><span>Monto exacto ($)</span><input type="number" min="0" step="any" data-f="monto" value="'+esc(it.monto)+'"></label>';
   else R+='<label class="w2"><span>'+(def.tier?'Valor por envío':def.perday?'Valor por día':'Valor')+' en $ (editable)</span><input type="number" min="0" step="any" data-f="precio" value="'+esc(it.precio)+'"></label>';
-  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>El precio sale tachado y la acción va a beneficio.</small></div></div>';
+  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">La asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado.</small></div></div>';
   R+='<label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n)+' en la propuesta"><span></span></label>';
   return '<div class="it calc'+(it.on?' on':'')+'" data-id="'+def.id+'"><div class="cl">'+L+'</div><div class="cr">'+R+'</div></div>';
 }
@@ -975,10 +1008,14 @@ function itemHTML(def){
     h+='<label class="span2" data-show="coord"'+(it.mode==='coord'?'':' hidden')+'><span>Valor</span><input type="text" value="Se coordina con Marketing" disabled></label></div>';
   }
   if(def.unlim)h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.ilim?' on':'')+'" data-u="1" aria-pressed="'+(it.ilim?'true':'false')+'">Ilimitado</button><small>La cantidad figura como "Ilimitado" en la propuesta.</small></div>';
-  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>El precio sale tachado y la acción va a beneficio.</small></div>';
+  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">La asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado.</small></div>';
   if(def.custom) h+='<div class="w2"><button class="x" type="button" data-del="'+def.id+'">Eliminar esta acción personalizada</button></div>';
   h+='</div><label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n||'acción')+' en la propuesta"><span></span></label></div>';
   return h;
+}
+function rtBase(){
+  if(!PV||!PVSRC||!PVSRC.items)return [];
+  return all().filter(function(d){var b=PVSRC.items[d.id];return b&&(b.gratis||b.mode==='canje'||b.mode==='coord')&&item(d).on});
 }
 function sec(id,pill,title,lead,inner){return '<section class="e-sec" id="'+id+'"><div class="e-w"><div class="e-head"><span class="pill">'+pill+'</span><h2>'+title+'</h2><p>'+lead+'</p></div>'+inner+'</div></section>'}
 function buildForm(){
@@ -991,20 +1028,26 @@ function buildForm(){
   d+='<label class="f"><span>Notas o condiciones (debajo del total)</span><textarea data-s="notas" placeholder="Opcional">'+esc(S.notas)+'</textarea></label></div>';
   d+='<div class="logo-row"><div class="logo-prev" id="logo-prev"></div><label class="btn sm" style="cursor:pointer">Usar otro logo<input type="file" id="logo-in" accept="image/*" hidden></label><button class="x" type="button" id="logo-del">Volver al de RedTickets</button></div></div>';
   var a='';
+  var RT=rtBase(), ap='';
+  if(PV&&RT.length)ap='<div class="e-grid">'+RT.map(function(x){var o=rowInfo(x);
+    return '<div class="it on rtc"><div class="it-h"><b>'+o.name+'</b>'+(o.detail?'<small>'+o.detail+'</small>':'')+'<span class="it-pr">'+esc(o.txt)+(o.qty!==1&&o.qty!=='—'?' · '+esc(typeof o.qty==='number'?'× '+o.qty:o.qty):'')+'</span></div><span class="rtag">'+(item(x).mode==='canje'?'Por canje':item(x).mode==='coord'?'A coordinar':'La asume RedTickets')+'</span></div>'}).join('')+'</div>';
+  function free(x){return !(PV&&RT.indexOf(x)>=0)}
   GROUPS.forEach(function(g){
+    var L=CATALOG.filter(function(x){return x.g===g[0]&&free(x)});if(!L.length)return;
     a+='<h3 class="e-grp">'+g[1]+'</h3><div class="'+(g[0]==='calc'?'e-grid2':'e-grid')+'">';
-    CATALOG.filter(function(x){return x.g===g[0]}).forEach(function(x){a+=itemHTML(x)});
+    L.forEach(function(x){a+=itemHTML(x)});
     a+='</div>';
   });
-  a+='<h3 class="e-grp'+(PV&&!S.custom.length?' only-ed':'')+'">'+(PV?'Otras acciones':'Acciones personalizadas')+'</h3><div class="e-grid">';
-  S.custom.forEach(function(x){a+=itemHTML(x)});
+  var CU=S.custom.filter(free);
+  a+='<h3 class="e-grp'+(PV&&!CU.length?' only-ed':'')+'">'+(PV?'Otras acciones':'Acciones personalizadas')+'</h3><div class="e-grid">';
+  CU.forEach(function(x){a+=itemHTML(x)});
   a+='</div><button class="btn" type="button" id="add" style="margin-top:14px">+ Agregar acción</button>';
   var v='<div class="e-card"><div class="warn" id="warn">Son muchas acciones para una sola carilla: la tabla se achicó al mínimo y aun así no entra. Quitá alguna acción o acortá los textos.</div><div class="e-f2">';
   v+='<label class="f"><span>Bonificación sobre el total (%)</span><input type="number" min="0" max="100" step="any" data-s="desc" value="'+esc(S.desc)+'"><small>Se suma a "Apoya RedTickets".</small></label>';
   v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['inc','Aclarar "IVA inc."'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
-    (PV?sec('acciones','Tu propuesta','Las acciones <em>que te proponemos</em>','Las que ya están marcadas son la base que armó el equipo de Marketing. Podés quitar las que no quieras, sumar otras y ajustar cantidades: el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>a realizar</em>','Agregá las que van en esta propuesta. En cada una definís cuándo se hace, la cantidad y el valor, o la marcás sin costo.',a))+
+    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones','Acciones adicionales','Sumá las adicionales <em>que quieras</em>','Además del aporte de RedTickets, podés agregar otras acciones. Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>que asume RedTickets</em>','Las que agregues van como aporte de RedTickets: el productor las ve sin costo. Si alguna se la querés cobrar, apagá "La asume RedTickets" en esa acción. Después, desde el link, el productor puede sumar las adicionales que quiera.',a))+
     sec('valores','Paso 3','Valores y <em>total</em>','Cómo se muestra el total de la propuesta.',v)+
     '<datalist id="cuando">'+CUANDO.map(function(c){return '<option value="'+c+'">'}).join('')+'</datalist>';
   drawLogoPrev();
@@ -1020,6 +1063,7 @@ $('form').addEventListener('input',function(e){
   var f=t.getAttribute('data-f'), c=t.getAttribute('data-c'), it=item(def);
   if(c){def[c]=t.value; if(c==='n')box.querySelector('.it-h b').textContent=t.value||'Acción personalizada';}
   if(f==='on'){it.on=t.checked;box.classList.toggle('on',it.on);
+    if(!PV&&it.mode==='valor'){it.gratis=it.on?true:!!def.gratis;var gb=box.querySelector('[data-g]');if(gb){gb.classList.toggle('on',it.gratis);gb.setAttribute('aria-pressed',String(it.gratis))}}
     if(def.calc==='dest'&&it.on&&!POS[it.pos]){it.pos=1;it.precio=POS[1].p;it.cur=POS[1].c;box.outerHTML=itemHTML(def)}}
   else if(f==='dest'){it.dest=Number(t.value);it.precio=tierPrice(def,it.dest);it.cur='UYU'}
   else if(f==='cuandoSel'){var cq=box.querySelector('[data-cuo]');
@@ -1062,7 +1106,7 @@ $('form').addEventListener('change',function(e){
   var r=new FileReader(); r.onload=function(){S.logo=r.result;drawLogoPrev();update()}; r.readAsDataURL(f);
 });
 $('nueva').addEventListener('click',function(){
-  if(PV){S=decState(PVCODE);buildForm();update();say('Volviste a la propuesta inicial.');return}
+  if(PV){S=fromObj(PVSRC);buildForm();update();say('Volviste a la propuesta inicial.');return}
   var b=base(); ['cliente','evento','fecha','validez','duracion','intro','notas','desc'].forEach(function(k){S[k]=b[k]});
   S.custom.forEach(function(c){delete S.items[c.id]}); S.custom=[];
   for(var id in S.items){S.items[id].on=false;S.items[id].cuando='';S.items[id].cant=1;S.items[id].gratis=false;S.items[id].ilim=false;S.items[id].cuo=false}
@@ -1399,24 +1443,75 @@ async function exportA4(btn){
 $('pdf').addEventListener('click',function(){exportA4(this)});
 
 /* ============ Link para el productor ============ */
-var BASE_URL='https://propuestasmkt.pages.dev/';
+var BASE_URL='https://mktrt.com/';
 var HOSTED=!(window.claude&&window.claude.use)&&/^https?:$/.test(location.protocol);
-function encState(){
+function encObj(){
   var o={v:1};['cliente','evento','fecha','validez','duracion','tc','moneda','intro','notas','desc','iva','extras'].forEach(function(k){o[k]=S[k]});
   o.items={};o.custom=[];
   all().forEach(function(d){var it=S.items[d.id];if(!it||!it.on)return;var c={};for(var k in it){if(it[k]!==''&&it[k]!==false&&it[k]!=null)c[k]=it[k]}o.items[d.id]=c;if(d.custom)o.custom.push({id:d.id,custom:true,n:d.n,d:d.d})});
-  var b=btoa(unescape(encodeURIComponent(JSON.stringify(o))));
+  return o;
+}
+function encState(){
+  var b=btoa(unescape(encodeURIComponent(JSON.stringify(encObj()))));
   return b.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
-function decState(code){
-  var b=code.replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';
-  var o=JSON.parse(decodeURIComponent(escape(atob(b)))), n=base();
+function parseCode(code){var b=code.replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';return JSON.parse(decodeURIComponent(escape(atob(b))))}
+function fromObj(src){
+  var o=JSON.parse(JSON.stringify(src||{})), n=base();
   ['cliente','evento','fecha','validez','duracion','tc','moneda','intro','notas','desc','iva','extras'].forEach(function(k){if(k in o)n[k]=k==='extras'?!!o[k]:String(o[k]==null?'':o[k])});
   n.custom=(o.custom||[]).map(function(c){return {id:String(c.id),custom:true,n:String(c.n||''),d:String(c.d||'')}});
   n.items={};for(var id in (o.items||{})){var it=o.items[id];if(it&&typeof it==='object'){it.on=true;n.items[id]=it}}
   return n;
 }
+function decState(code){return fromObj(parseCode(code))}
+var API_READY=false, EDIT_KEY='', PVSRC=null, PVSLUG='';
+try{EDIT_KEY=localStorage.getItem('rt-edit-key')||''}catch(e){}
+function api(path,opt){opt=opt||{};opt.headers=Object.assign({'x-edit-key':EDIT_KEY},opt.headers||{});
+  return fetch('/api/'+path,opt).then(function(r){return r.json().then(function(j){if(!r.ok)throw j;return j})})}
+function apiErr(e){var c=e&&e.error;return c==='clave_incorrecta'?'La clave del equipo no es correcta.':c==='nombre_invalido'?'El nombre del link solo puede tener letras, números y guiones.':c==='no_configurado'?'El guardado de propuestas todavía no está activado en Cloudflare.':c==='no_encontrada'?'No se encontró.':'No se pudo conectar. Probá de nuevo.'}
+function cleanSlug(v){return slug(v).toLowerCase().slice(0,80)}
+function fechaHora(t){try{return new Date(Number(t)).toLocaleString('es-UY',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+document.querySelectorAll('.sk').forEach(function(i){i.value=EDIT_KEY;i.addEventListener('input',function(){EDIT_KEY=this.value;var me=this;document.querySelectorAll('.sk').forEach(function(x){if(x!==me)x.value=EDIT_KEY});try{localStorage.setItem('rt-edit-key',EDIT_KEY)}catch(e){}})});
+$('sl').addEventListener('input',function(){this.setAttribute('data-t','1')});
+$('sl-go').addEventListener('click',function(){
+  var sl=cleanSlug($('sl').value), note=$('sl-note'), btn=this;
+  if(!sl){note.textContent='Poné un nombre para el link (por ejemplo, el del evento).';return}
+  if(!EDIT_KEY){note.textContent='Escribí la clave del equipo.';return}
+  $('sl').value=sl;btn.disabled=true;
+  var body=encObj();body._total=fmt(calc().total);
+  api('p/'+sl,{method:'PUT',body:JSON.stringify(body)}).then(function(){
+    $('sl-out').value=location.origin+'/p/'+sl;
+    note.textContent='Listo: propuesta guardada. Si la cambian, toquen de nuevo "Crear link corto" con el mismo nombre para actualizarla.';
+  }).catch(function(e){note.textContent=apiErr(e)}).then(function(){btn.disabled=false});
+});
+$('sl-copy').addEventListener('click',function(){
+  var v=$('sl-out').value;if(!v){$('sl-note').textContent='Primero tocá "Crear link corto".';return}
+  try{navigator.clipboard.writeText(v).then(function(){say('Link corto copiado.')},function(){$('sl-out').select()})}catch(e){$('sl-out').select()}
+});
+function loadState(o,msg){var keep={base:S.base,logo:S.logo};S=fromObj(o);S.base=keep.base;S.logo=keep.logo;buildForm();update();say(msg);window.scrollTo(0,0)}
+$('ad-go').addEventListener('click',function(){
+  var out=$('ad-out'), btn=this;
+  if(!EDIT_KEY){out.innerHTML='<p>Escribí la clave del equipo.</p>';return}
+  btn.disabled=true;
+  api('list').then(function(j){
+    var P=(j.proposals||[]).sort(function(a,b){return (b.at||0)-(a.at||0)}), R=(j.requests||[]).sort(function(a,b){return (b.at||0)-(a.at||0)});
+    var h='<div class="adh">Solicitudes de productores ('+R.length+')</div>';
+    h+=R.length?'<div class="adw"><table class="adt"><thead><tr><th>Fecha</th><th>Propuesta</th><th>Nombre</th><th>Teléfono</th><th>Email</th><th>Vía</th><th>Total</th><th></th></tr></thead><tbody>'+R.map(function(x){
+      return '<tr><td>'+esc(fechaHora(x.at))+'</td><td>'+esc(x.slug)+'</td><td>'+esc(x.name||'—')+'</td><td>'+esc(x.phone||'—')+'</td><td>'+esc(x.email||'—')+'</td><td>'+esc(x.via||'')+'</td><td><b>'+esc(x.total||'')+'</b></td><td><button type="button" class="btn sm" data-ls="'+esc(x.id)+'">Cargar</button></td></tr>'}).join('')+'</tbody></table></div>':'<p style="color:var(--mut)">Todavía no hay solicitudes enviadas desde un link corto.</p>';
+    h+='<div class="adh">Propuestas guardadas ('+P.length+')</div>';
+    h+=P.length?'<div class="adw"><table class="adt"><thead><tr><th>Actualizada</th><th>Link</th><th>Evento</th><th>Cliente</th><th>Total</th><th></th></tr></thead><tbody>'+P.map(function(x){
+      return '<tr><td>'+esc(fechaHora(x.at))+'</td><td><a href="/p/'+esc(x.slug)+'" target="_blank" rel="noopener">/p/'+esc(x.slug)+'</a></td><td>'+esc(x.evento||'—')+'</td><td>'+esc(x.cliente||'—')+'</td><td><b>'+esc(x.total||'')+'</b></td><td><button type="button" class="btn sm" data-lp="'+esc(x.slug)+'">Cargar</button></td></tr>'}).join('')+'</tbody></table></div>':'<p style="color:var(--mut)">Todavía no hay propuestas guardadas.</p>';
+    h+='<p style="color:var(--mut);font-size:12px;margin:14px 0 0">"Cargar" abre esa propuesta o solicitud en el generador, reemplazando lo que tengas armado ahora.</p>';
+    out.innerHTML=h;
+  }).catch(function(e){out.innerHTML='<p>'+apiErr(e)+'</p>'}).then(function(){btn.disabled=false});
+});
+$('ad-out').addEventListener('click',function(e){
+  var p=e.target.getAttribute('data-lp'), q=e.target.getAttribute('data-ls');
+  if(p)api('p/'+p).then(function(o){loadState(o,'Cargaste la propuesta "'+p+'".');$('sl').value=p;$('sl').setAttribute('data-t','1')}).catch(function(e){say(apiErr(e))});
+  if(q)api('s/'+encodeURIComponent(q)).then(function(o){loadState(o.state,'Cargaste la solicitud de '+((o.contact&&o.contact.name)||'un productor')+'.')}).catch(function(e){say(apiErr(e))});
+});
 function drawLink(){
+  if(!$('sl').getAttribute('data-t'))$('sl').value=cleanSlug(S.evento||S.cliente);
   var b=HOSTED?location.href.split('#')[0]:String(S.base||BASE_URL).trim(), n=calc().rows.length, note=$('lk-note');
   $('base-l').hidden=HOSTED;
   if(!b){$('lk').value='';$('lk-open').removeAttribute('href');note.textContent='Cargá arriba la dirección donde subieron este archivo (por ejemplo, la de Cloudflare) para armar el link.';return}
@@ -1460,11 +1555,11 @@ function renderPV(){
   var ev=S.evento?' para '+S.evento:'';
   document.title='Propuesta de Marketing'+(S.evento?' · '+S.evento:'')+' · RedTickets';
   var hh='<span class="tagp">Propuesta de Marketing · '+esc(fechaLarga(S.fecha))+'</span><h1>'+(S.evento?'Plan de acciones para <em>'+esc(S.evento)+'</em>':'Tu plan de acciones <em>de marketing</em>')+'</h1>';
-  hh+='<p>'+(S.intro.trim()?esc(S.intro.trim()):'Te dejamos una propuesta armada por el equipo de Marketing de RedTickets. Podés sumar o quitar acciones y ajustar cantidades; el total se actualiza al instante.')+'</p><div class="chips2">';
+  hh+='<p>'+(S.intro.trim()?esc(S.intro.trim()):'RedTickets contribuirá con acciones de marketing para tu evento, sin costo para vos. Además podés sumar las adicionales que quieras: el total se actualiza al instante.')+'</p><div class="chips2">';
   if(S.cliente)hh+='<span>Preparado para <b>'+esc(S.cliente)+'</b></span>';
   if(S.duracion)hh+='<span>Duración <b>'+esc(S.duracion)+'</b></span>';
   if(S.validez)hh+='<span>Validez <b>'+esc(S.validez)+'</b></span>';
-  hh+='</div><div class="e-cta"><a class="btn" href="#acciones">Ver las acciones</a><a class="btn gh" href="#solicitud">Enviar solicitud</a></div>';
+  hh+='</div><div class="e-cta"><a class="btn" href="#aporte">Ver el aporte de RedTickets</a><a class="btn gh" href="#solicitud">Enviar solicitud</a></div>';
   $('ehero').innerHTML=hh;
   $('vista-h').innerHTML='<span class="pill">Vista previa</span><h2>Así queda <em>tu propuesta</em></h2><p>Se actualiza con cada cambio. La podés descargar en PDF desde la barra de abajo.</p>';
   $('nueva').textContent='Volver a la propuesta inicial';
@@ -1499,8 +1594,9 @@ function renderPV(){
     L.push(div,pad('DESCUENTO LIQUIDACIÓN BYHORMIGA',fmt(c.total)),'','Este monto se descontará de la liquidación del evento.','Esta inversión es por evento.');
     return L.join('\n');
   }
-  $('rq-mail').addEventListener('click',function(){go('mailto:marketing@redtickets.uy?cc='+encodeURIComponent('lorenzo@redtickets.uy,agustina@redtickets.uy')+'&subject='+encodeURIComponent('Propuesta de Marketing'+ev)+'&body='+encodeURIComponent(order()),$('rq-msg'),'abrir el correo')});
-  $('rq-wa').addEventListener('click',function(){var n=$('rq-name').value.trim();go('https://wa.me/59894144031?text='+encodeURIComponent('Hola Lorenzo'+(n?', soy '+n:'')+'. Revisé la propuesta de marketing'+ev+' y quiero avanzar.\n\n'+order()),$('rq-msg'),'abrir WhatsApp')});
+  function record(via){if(!PVSLUG)return;try{fetch('/api/s/'+PVSLUG,{method:'POST',body:JSON.stringify({state:encObj(),total:fmt(calc().total),via:via,contact:{name:$('rq-name').value.trim(),event:$('rq-event').value.trim(),phone:$('rq-phone').value.trim(),email:$('rq-email').value.trim()}})}).catch(function(){})}catch(e){}}
+  $('rq-mail').addEventListener('click',function(){record('email');go('mailto:marketing@redtickets.uy?cc='+encodeURIComponent('lorenzo@redtickets.uy,agustina@redtickets.uy')+'&subject='+encodeURIComponent('Propuesta de Marketing'+ev)+'&body='+encodeURIComponent(order()),$('rq-msg'),'abrir el correo')});
+  $('rq-wa').addEventListener('click',function(){record('whatsapp');var n=$('rq-name').value.trim();go('https://wa.me/59894144031?text='+encodeURIComponent('Hola Lorenzo'+(n?', soy '+n:'')+'. Revisé la propuesta de marketing'+ev+' y quiero avanzar.\n\n'+order()),$('rq-msg'),'abrir WhatsApp')});
   $('px-send').addEventListener('click',function(){
     var e=$('px-ev').value.trim(),m=$('px-meta').value.trim(),hd=$('px-head').value.trim(),bd=$('px-body').value.trim(),msg=$('px-msg');
     if(!m&&!hd&&!bd){msg.textContent='Completá al menos un campo antes de enviar.';return}
@@ -1518,12 +1614,24 @@ $('guia').addEventListener('click',function(e){var a=e.target.closest('a[href^="
 window.addEventListener('hashchange',function(){if(/^#p=/.test(location.hash))location.reload()});
 
 var m0=location.hash.match(/^#p=([A-Za-z0-9_-]+)$/);
-var PVCODE=m0?m0[1]:'';
-if(m0){try{S=decState(m0[1]);PV=true}catch(e){PV=false}}
-if(PV){renderPV()}else{
-buildForm(); update();
-if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
+var mp=HOSTED&&location.pathname.match(/^\/p\/([a-z0-9][a-z0-9-]*)\/?$/);
+function startEditor(){
+  buildForm(); update();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
+  if(HOSTED)fetch('/api/status').then(function(r){return r.json()}).then(function(j){API_READY=!!(j&&j.ready);document.body.classList.toggle('api-on',API_READY)}).catch(function(){});
 }
+if(mp){
+  PV=true;document.body.classList.add('loading');
+  fetch('/api/p/'+mp[1]).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(o){
+    PVSRC=o;PVSLUG=mp[1];S=fromObj(o);document.body.classList.remove('loading');renderPV();
+  }).catch(function(){
+    var d=document.createElement('div');d.className='nf';d.innerHTML='<img src="'+LOGO+'" alt="RedTickets"><p><b>No encontramos esta propuesta.</b></p><p>Puede que el link esté incompleto o que la propuesta ya no esté disponible. Pedile el link de nuevo al equipo de Marketing de RedTickets.</p>';
+    document.body.appendChild(d);
+  });
+}else if(m0){
+  try{PVSRC=parseCode(m0[1]);S=fromObj(PVSRC);PV=true}catch(e){PV=false}
+  if(PV)renderPV();else startEditor();
+}else startEditor();
 </script>
 </body>
 </html>
