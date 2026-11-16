@@ -1585,7 +1585,7 @@ var PVCSS2='.pv{min-height:100vh}.pv .pvbar{position:sticky;top:0;z-index:5;back
 '.pv .cta{background:#0e0e12;color:#fff;border-radius:30px;padding:34px 24px 28px;margin-bottom:10px}.pv .cta .pill{background:rgba(255,255,255,.12);color:#ff8a3d}.pv .cta h2{margin:14px 0 8px;max-width:none}.pv .cta>p{color:#c9c9d1;margin:0 0 22px;font-size:14.5px;max-width:620px}'+
 '.pv .cfields{display:grid;gap:0 14px;margin-bottom:10px}.pv .cta label.f{color:#b9b9c2}.pv .cta label.f input{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);color:#fff}.pv .cta label.f input::placeholder{color:#8a8a93}'+
 '.pv .crow{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14px}.pv .crow span:first-child{color:#c9c9d1}.pv .crow span:last-child{font-weight:600;text-align:right}.pv .crow.tot2{border-bottom:0;border-top:2px solid #FF6600;margin-top:8px;padding-top:16px}.pv .crow.tot2 span:first-child{color:#fff;font-weight:700}.pv .crow.tot2 span:last-child{color:#ff8a3d;font-family:"Inter Tight",Inter,sans-serif;font-size:20px;font-weight:500}'+
-'.pv .liq{margin:10px 0 0;font-size:13.5px;color:#fff;background:rgba(255,255,255,.08);border-radius:14px;padding:12px 16px}.pv .cbtn{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pv .cta .pnote{color:#b9b9c2}.pv .cta .pnote a{color:#ff8a3d}'+
+'.pv .crow.rt span:last-child{color:#6fe39a}.pv .crow.rt span:first-child{color:#eafff1}.pv .crow.rt i{font-style:normal;font-size:11px;font-weight:700;color:#0e0e12;background:#6fe39a;border-radius:99px;padding:2px 9px;margin-left:8px;white-space:nowrap}.pv .crow.ap span:first-child{color:#6fe39a;font-weight:700}.pv .liq{margin:10px 0 0;font-size:13.5px;color:#fff;background:rgba(255,255,255,.08);border-radius:14px;padding:12px 16px}.pv .cbtn{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pv .cta .pnote{color:#b9b9c2}.pv .cta .pnote a{color:#ff8a3d}'+
 '@media(min-width:640px){.pv .cfields{grid-template-columns:repeat(4,1fr)}.pv .guia .guide-toc{grid-template-columns:1fr 1fr}}'+
 '@media(max-width:520px){.pv .pvb button{padding:8px 11px;font-size:12px}}';
 function actHTML(d,i){var o=rowInfo(d);
@@ -1624,7 +1624,8 @@ function renderPV(){
   h+='<div class="ft"><img src="'+LOGO+'" alt="RedTickets">redtickets.uy</div></div></div>';
   $('pv').innerHTML=h;
   window.drawReq=function(){var c=calc();
-    $('rq-rows').innerHTML=(c.rows.length?c.rows.map(function(d){var o=rowInfo(d);return '<div class="crow"><span>'+o.name+'</span><span>'+esc(o.txt)+'</span></div>'}).join(''):'<div class="crow"><span>Todavía no hay acciones seleccionadas. Elegí alguna arriba.</span><span></span></div>')+
+    $('rq-rows').innerHTML=(c.rows.length?c.rows.map(function(d){var o=rowInfo(d),g=item(d).gratis&&item(d).mode==='valor';return '<div class="crow'+(g?' rt':'')+'"><span>'+o.name+(g?' <i>Aporta RedTickets</i>':'')+'</span><span>'+esc(o.txt)+'</span></div>'}).join(''):'<div class="crow"><span>Todavía no hay acciones seleccionadas. Elegí alguna arriba.</span><span></span></div>')+
+      (any(sum2(c.gift,c.desc))?'<div class="crow rt ap"><span>Apoya RedTickets</span><span>− '+fmt(sum2(c.gift,c.desc))+'</span></div>':'')+
       '<div class="crow tot2"><span>Descuento Liquidación ByHormiga</span><span>'+fmt(c.total)+'</span></div><p class="liq">Este monto se descontará de la liquidación del evento. No hay que hacer ningún pago por adelantado.</p>';};
   function go(url,msgEl,txt){msgEl.innerHTML='';var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=txt;msgEl.appendChild(document.createTextNode('Si no se abrió solo, tocá acá: '));msgEl.appendChild(a);try{window.open(url,'_blank','noopener')}catch(e){}}
   function order(){
