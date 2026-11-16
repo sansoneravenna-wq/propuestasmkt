@@ -344,7 +344,7 @@ table.t{width:100%;border-collapse:collapse}
 <div class="sbar" id="sbar"><div class="e-w sb-in">
   <div class="total-mini"><small id="tm-l">Total</small><b id="tm">—</b></div>
   <span class="msg" id="msg"></span>
-  <div class="sb-btn"><button class="btn gh" id="nueva" type="button">Vaciar selección</button><button class="btn gh" id="web" type="button">PDF para pantallas (9:16)</button><button class="btn or" id="pdf" type="button">Descargar PDF</button><a class="btn only-pv" href="#solicitud">Enviar solicitud</a></div>
+  <div class="sb-btn"><button class="btn gh" id="nueva" type="button">Vaciar selección</button><button class="btn or" id="pdf" type="button">Descargar PDF</button><a class="btn only-pv" href="#solicitud">Enviar solicitud</a></div>
 </div></div>
 <div id="pv"></div>
 <template id="guia-tpl"><p class="guide-meta"><strong>RedTickets · Guía Oficial · v1.0 · 2026</strong> — <em>Acá pasan cosas.</em></p>
@@ -1395,7 +1395,6 @@ async function exportA4(btn){
     say(e&&e.code==='declined'?'Descarga cancelada.':'No se pudo generar el PDF'+(e&&e.message?': '+e.message:'.'));
   }finally{ex.innerHTML='';btn.disabled=false;$('ov').classList.remove('on');}
 }
-$('web').addEventListener('click',function(){exportStory(this)});
 $('pdf').addEventListener('click',function(){exportA4(this)});
 
 /* ============ Link para el productor ============ */
