@@ -324,6 +324,7 @@ body.loading #ed,body.loading .sbar{display:none}
 .adt a{color:var(--o2);font-weight:600;text-decoration:none}
 .adh{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:19px;letter-spacing:-.03em;margin:22px 0 4px}
 .adw{overflow-x:auto}
+body.no-save #ad-open{display:none!important}
 .hbtn{display:flex;align-items:center;gap:10px}
 .icob{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex:none}
 .icob:hover{border-color:#c9c9cf}
@@ -365,7 +366,7 @@ body.api-on .drw-off{display:none}
     <div class="e-head" id="vista-h"><span class="pill">Vista previa</span><h2>Así queda <em>la propuesta</em></h2><p>La primera carilla lleva las acciones elegidas; las siguientes, todo lo que podemos hacer.</p></div>
     <div class="e-card" id="linkbox" hidden>
       <b class="t">Link para el productor</b>
-      <p>Quien abra este link ve este mismo armador con las acciones ya marcadas como base. Puede sumar o quitar acciones y ajustar cantidades, pero no cambiar precios, y al final envía su solicitud.</p>
+      <p>Quien abra este link ve las acciones que elegiste como aporte de RedTickets, en verde y sin costo, y no las puede modificar. Puede sumar acciones adicionales con costo y, al final, enviar su solicitud.</p>
       <div class="api-only" id="short-box">
         <div class="e-f2"><label class="f"><span>Nombre del link (sale del evento)</span><input type="text" id="sl" placeholder="festival-de-verano-2027"></label>
         <label class="f"><span>Clave del equipo</span><input type="password" class="sk" autocomplete="off" placeholder="La que definieron en Cloudflare"></label></div>
@@ -1496,6 +1497,10 @@ function fromObj(src){
   return n;
 }
 function decState(code){return fromObj(parseCode(code))}
+// Link corto y panel de propuestas/solicitudes: apagados por decisión del equipo (se usa el link largo).
+// Para volver a prenderlos, cambiar a true.
+var GUARDADO=false;
+if(!GUARDADO)document.body.classList.add('no-save');
 var API_READY=false, EDIT_KEY='', PVSRC=null, PVSLUG='';
 try{EDIT_KEY=localStorage.getItem('rt-edit-key')||''}catch(e){}
 function api(path,opt){opt=opt||{};opt.headers=Object.assign({'x-edit-key':EDIT_KEY},opt.headers||{});
@@ -1655,7 +1660,7 @@ var mp=HOSTED&&location.pathname.match(/^\/p\/([a-z0-9][a-z0-9-]*)\/?$/);
 function startEditor(){
   buildForm(); update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
-  if(HOSTED)fetch('/api/status').then(function(r){return r.json()}).then(function(j){API_READY=!!(j&&j.ready);document.body.classList.toggle('api-on',API_READY)}).catch(function(){});
+  if(HOSTED&&GUARDADO)fetch('/api/status').then(function(r){return r.json()}).then(function(j){API_READY=!!(j&&j.ready);document.body.classList.toggle('api-on',API_READY)}).catch(function(){});
 }
 if(mp){
   PV=true;document.body.classList.add('loading');
