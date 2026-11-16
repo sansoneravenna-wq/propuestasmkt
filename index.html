@@ -1369,6 +1369,7 @@ $('web').addEventListener('click',function(){exportStory(this)});
 $('pdf').addEventListener('click',function(){exportA4(this)});
 
 /* ============ Link para el productor ============ */
+var BASE_URL='https://propuestasmkt.pages.dev/';
 var HOSTED=!(window.claude&&window.claude.use)&&/^https?:$/.test(location.protocol);
 function encState(){
   var o={v:1};['cliente','evento','fecha','validez','duracion','tc','moneda','intro','notas','desc','iva','extras'].forEach(function(k){o[k]=S[k]});
@@ -1386,7 +1387,7 @@ function decState(code){
   return n;
 }
 function drawLink(){
-  var b=HOSTED?location.href.split('#')[0]:String(S.base||'').trim(), n=calc().rows.length, note=$('lk-note');
+  var b=HOSTED?location.href.split('#')[0]:String(S.base||BASE_URL).trim(), n=calc().rows.length, note=$('lk-note');
   $('base-l').hidden=HOSTED;
   if(!b){$('lk').value='';$('lk-open').removeAttribute('href');note.textContent='Cargá arriba la dirección donde subieron este archivo (por ejemplo, la de Cloudflare) para armar el link.';return}
   if(!/^https?:\/\//i.test(b))b='https://'+b;
@@ -1394,7 +1395,7 @@ function drawLink(){
   $('lk').value=url;$('lk-open').href=url;
   note.textContent=n?('Incluye '+n+(n===1?' acción':' acciones')+' como base, con sus valores. Si cambian algo de la propuesta, vuelvan a copiar el link.'):'Todavía no hay acciones marcadas: el link abriría una propuesta vacía.';
 }
-$('gen').addEventListener('click',function(){$('linkbox').hidden=false;$('base').value=S.base||'';drawLink();$('linkbox').scrollIntoView({block:'center'});});
+$('gen').addEventListener('click',function(){$('linkbox').hidden=false;$('base').value=S.base||BASE_URL;drawLink();$('linkbox').scrollIntoView({block:'center'});});
 $('base').addEventListener('input',function(){S.base=this.value;save();drawLink()});
 $('lk-copy').addEventListener('click',function(){
   var v=$('lk').value;if(!v)return;
