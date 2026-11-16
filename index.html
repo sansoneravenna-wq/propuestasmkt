@@ -1001,7 +1001,7 @@ function buildForm(){
   a+='</div><button class="btn" type="button" id="add" style="margin-top:14px">+ Agregar acción</button>';
   var v='<div class="e-card"><div class="warn" id="warn">Son muchas acciones para una sola carilla: la tabla se achicó al mínimo y aun así no entra. Quitá alguna acción o acortá los textos.</div><div class="e-f2">';
   v+='<label class="f"><span>Bonificación sobre el total (%)</span><input type="number" min="0" max="100" step="any" data-s="desc" value="'+esc(S.desc)+'"><small>Se suma a "Apoya RedTickets".</small></label>';
-  v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
+  v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['inc','Aclarar "IVA inc."'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
     (PV?sec('acciones','Tu propuesta','Las acciones <em>que te proponemos</em>','Las que ya están marcadas son la base que armó el equipo de Marketing. Podés quitar las que no quieras, sumar otras y ajustar cantidades: el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>a realizar</em>','Agregá las que van en esta propuesta. En cada una definís cuándo se hace, la cantidad y el valor, o la marcás sin costo.',a))+
@@ -1108,6 +1108,7 @@ function totHTML(c){
   var n=['<b>Este monto se descontará de la liquidación del evento.</b>','Esta inversión es por evento.'];
   if(c.rows.some(function(d){return item(d).mode==='coord'}))n.push('Las acciones a coordinar se definen posteriormente con el equipo de Marketing de RedTickets.');
   if(S.iva==='nota')n.push('Valores + IVA.');
+  if(S.iva==='inc')n.push('Valores con IVA inc.');
   if(c.conv)n.push('Tipo de cambio: $ '+Number(S.tc).toLocaleString('es-UY')+' por USD.');
   return h+'<p class="tn">'+n.join(' ')+'</p></div>';
 }
