@@ -360,6 +360,34 @@ body.no-save #ad-open{display:none!important}
 .pl-i .pl-d span{display:block;font-size:12.5px;color:#6b6b73;margin-top:2px}
 .pl-i .pl-tot{font-family:"Inter Tight",Inter,sans-serif;font-size:19px;font-weight:500;white-space:nowrap}
 .pl-paid{display:inline-block!important;font-size:11px!important;font-weight:700;color:#12803a!important;background:#e0f5e7;border-radius:99px;padding:3px 9px;margin-top:6px!important}
+.ct{width:100%;border-collapse:collapse;margin-top:18px;table-layout:fixed}
+.ct th{text-align:center;padding:7px 2px 6px;vertical-align:bottom;font-weight:500}
+.ct th b{display:block;font-size:10.5px;font-weight:700;color:#17171a}
+.ct th span{display:block;font-size:8.5px;color:#9a9aa2;margin-top:1px;min-height:11px}
+.ct th i{display:inline-block;font-style:normal;font-size:7.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#FF6600;border-radius:99px;padding:2px 7px;margin-top:4px}
+.ct th.a{text-align:left;width:29%;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;color:#9a9aa2;font-weight:700}
+.ct th.e{border-radius:10px 10px 0 0}
+.ct th.e,.ct td.e{background:#fff3ec}
+.ct td{padding:4px 3px;height:30px;border-top:1px solid #efeff2}
+.ct td.a{font-weight:600;font-size:11px;padding-left:0;line-height:1.2}
+.ct u{display:block;text-decoration:none;height:18px;border-radius:99px;background:#ffd3b5;font-size:8.5px;font-weight:700;line-height:18px;text-align:center;color:#7a3300;white-space:nowrap;overflow:hidden}
+.ct u.s{background:#FF6600;color:#fff}
+.ct td.v u,.cleg u.k{background:#0e0e12}
+.pcal.sm .ct td{height:23px;padding:3px}.pcal.sm .ct td.a{font-size:9.5px}.pcal.sm .ct u{height:14px;line-height:14px;font-size:8px}
+.pcal .pb h2,.pcal .lead{margin-left:0;margin-right:0;max-width:none}
+.cleg{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:10px;color:#55555d}
+.cleg span{display:flex;align-items:center;gap:6px}
+.cleg u{display:block;width:26px;height:10px;border-radius:99px;background:#ffd3b5}.cleg u.s{background:#FF6600}
+.pcal .cnt{font-size:10px;color:#9a9aa2;margin:10px 0 0}
+.cal-h{display:block;color:var(--mut);font-size:12px;margin-top:8px}
+.cal-l{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.cal-l label{display:flex;align-items:center;gap:10px;justify-content:space-between;border:1px solid var(--line);border-radius:14px;padding:9px 12px;background:#fff}
+.cal-l label>span{min-width:0}
+.cal-l b{display:block;font-size:13px;font-weight:600}
+.cal-l small{display:block;font-size:12px;color:var(--o2);font-weight:600}
+.cal-l select{width:150px;flex:none}
+@media (max-width:760px){.cal-l{grid-template-columns:1fr}.cal-l select{width:128px}}
+.pl-src{color:#8a4b00!important;background:#fff0dc}
 .pl-a{display:flex;gap:6px;flex-wrap:wrap;width:100%}
 .pl-c .pl-a .btn{width:auto;margin:0;padding:8px 13px;font-size:12.5px}
 .ds-k{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
@@ -407,7 +435,7 @@ body.api-on .drw-off{display:none}
 <div id="ed">
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
-    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-ed" href="#pl-r" data-pl="r">Propuestas Realizadas</a><a class="only-ed" href="#pl-p" data-pl="p">Propuestas Pagas</a><a class="only-ed" href="#pl-d" data-pl="d">Dashboard</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
+    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a href="#calendario">Calendario</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-ed" href="#pl-r" data-pl="r">Realizadas</a><a class="only-ed" href="#pl-p" data-pl="p">Pagas</a><a class="only-ed" href="#pl-d" data-pl="d">Dashboard</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
     <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver <span class="hm">panel de </span>productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a><button class="icob" id="eq-in" type="button" aria-label="Ingreso del equipo de Marketing" title="Ingreso del equipo de Marketing" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="icob only-ed" id="pl-open" type="button" data-pl="r" aria-label="Propuestas realizadas y pagas" title="Propuestas realizadas y pagas"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></button><button class="btn" id="eq-out" type="button" hidden>Salir</button></div>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
@@ -901,7 +929,7 @@ body.api-on .drw-off{display:none}
         </p></template>
 <div id="export-stage" aria-hidden="true"></div>
 <div class="ov" id="ov">Generando PDF…</div>
-<div class="lg" id="pl" hidden><div class="lg-c pl-c"><button type="button" class="icob lg-x" id="pl-x" aria-label="Cerrar">✕</button><b>Propuestas</b><div class="pl-t" role="tablist"><button type="button" class="chip" data-tab="r">Realizadas</button><button type="button" class="chip" data-tab="p">Pagas</button><button type="button" class="chip" data-tab="d">Dashboard</button></div><div id="pl-l"></div><small class="pl-n">Se guardan en este navegador cada vez que descargás el PDF de una propuesta.</small></div></div>
+<div class="lg" id="pl" hidden><div class="lg-c pl-c"><button type="button" class="icob lg-x" id="pl-x" aria-label="Cerrar">✕</button><b>Propuestas</b><div class="pl-t" role="tablist"><button type="button" class="chip" data-tab="r">Realizadas</button><button type="button" class="chip" data-tab="p">Pagas</button><button type="button" class="chip" data-tab="d">Dashboard</button></div><div id="pl-l"></div><small class="pl-n" id="pl-note"></small></div></div>
 <div class="lg" id="lg" hidden><form class="lg-c" id="lg-f" autocomplete="off"><button type="button" class="icob lg-x" id="lg-x" aria-label="Cerrar">✕</button><b>Equipo de Marketing</b><p>Ingresá la clave del equipo para armar propuestas y definir qué acciones asume RedTickets.</p><label class="f"><span>Clave</span><input type="password" id="lg-k" autocomplete="off"></label><div class="lg-e" id="lg-e" hidden>La clave no es correcta.</div><button class="btn pri" type="submit">Ingresar</button></form></div>
 
 <script>
@@ -1137,6 +1165,7 @@ function buildForm(){
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
     (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones',PROD?'Acciones':'Acciones adicionales',PROD?'Elegí las acciones <em>para tu evento</em>':'Sumá las adicionales <em>que quieras</em>',PROD?'Usá las calculadoras para definir volúmenes, días y plataformas, y agregá lo que quieras a tu propuesta. Las pantallas se obtienen por canje de entradas y las alianzas se coordinan con el equipo de Marketing.':'Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>de la propuesta</em>','En cada una definís cuándo se hace, la cantidad y el valor. Con "Asume RedTickets" va sin costo para el productor; en "Tipo" podés pasarla a canje o a coordinar.',a))+
+    sec('calendario','Calendario','Repartí las acciones <em>en el tiempo</em>',PV?'Si querés, sumá a tu propuesta un calendario: indicá la fecha del evento y en qué semanas querés poner el énfasis, y las acciones se distribuyen solas.':'Sumá al PDF una página con el calendario. Indicá la fecha del evento y las semanas de énfasis: las acciones se distribuyen solas y podés mover cualquiera a mano.','<div class="e-card" id="cal-box"></div>')+
     sec('valores','Paso 3','Valores y <em>total</em>','Cómo se muestra el total de la propuesta.',v)+
     '<datalist id="cuando">'+CUANDO.map(function(c){return '<option value="'+c+'">'}).join('')+'</datalist>';
   drawLogoPrev();
@@ -1275,8 +1304,8 @@ function page1(c,tot){
 function card(n,d,cls){return '<div class="card'+(cls?' '+cls:'')+'"><b>'+n+'</b><p>'+d+'</p></div>'}
 function stat(b,s){return '<div class="stat"><b>'+b+'</b><span>'+s+'</span></div>'}
 function step(i,b,p){return '<div class="step"><i>'+i+'</i><div><b>'+b+'</b><p>'+p+'</p></div></div>'}
-function page2(tot){return '<section class="page">'+head('Posibilidades de acciones')+'<div class="pb">'+body2()+'</div>'+foot(2,tot)+'</section>'}
-function page3(tot){return '<section class="page p3">'+head('Posibilidades de acciones')+'<div class="pb">'+body3()+'</div>'+blog()+'<div class="firma">'+firma()+'</div>'+foot(3,tot)+'</section>'}
+function page2(tot,n){return '<section class="page">'+head('Posibilidades de acciones')+'<div class="pb">'+body2()+'</div>'+foot(n||2,tot)+'</section>'}
+function page3(tot,n){return '<section class="page p3">'+head('Posibilidades de acciones')+'<div class="pb">'+body3()+'</div>'+blog()+'<div class="firma">'+firma()+'</div>'+foot(n||3,tot)+'</section>'}
 function body2(){
   var h='';
   h+='<div class="ctr"><span class="pill">Marketing 360°</span><h2>Pauta, cobertura y prensa<br><em style="white-space:nowrap">con un solo equipo</em></h2>';
@@ -1357,9 +1386,10 @@ function scale(){
   pg.style.height=(pg.scrollHeight*s)+'px';
 }
 function update(){
-  var c=calc(), tot=S.extras?3:1;
+  var c=calc();
+  var cbx=$('cal-box');if(cbx&&!cbx.contains(document.activeElement))calDraw();
   var pg=$('pages'); pg.style.height='auto';
-  pg.innerHTML=page1(c,tot)+(S.extras?page2(tot)+page3(tot):'');
+  pg.innerHTML=pagesHTML(c);
   var ok=fit(pg); var w=$('warn'); if(w)w.style.display=ok?'none':'block';
   $('tm').textContent=c.rows.length?fmt(c.total):'—';
   $('tm-l').textContent=c.rows.length+(c.rows.length===1?' acción':' acciones')+' · se descuenta de la liquidación';
@@ -1515,8 +1545,8 @@ async function exportA4(btn,nosave){
   btn.disabled=true; $('ov').classList.add('on'); say('');
   var ex=$('export-stage');
   try{
-    var c=calc(), tot=S.extras?3:1;
-    ex.innerHTML=page1(c,tot)+(S.extras?page2(tot)+page3(tot):'');
+    var c=calc();
+    ex.innerHTML=pagesHTML(c);
     if(document.fonts&&document.fonts.ready)await document.fonts.ready;
     fit(ex);
     var pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',compress:true});
@@ -1535,56 +1565,165 @@ async function exportA4(btn,nosave){
   }finally{ex.innerHTML='';btn.disabled=false;$('ov').classList.remove('on');}
 }
 $('pdf').addEventListener('click',function(){exportA4(this)});
-/* ============ Propuestas realizadas y pagas (en este navegador) ============ */
-var PLK='rt-props-v1', PLT='r';
-function plAll(){try{return JSON.parse(localStorage.getItem(PLK)||'[]')||[]}catch(e){return []}}
+
+/* ============ Calendario (reglas fijas) ============ */
+var PHASE={landing:'ini',tickets:'ini',diseno:'ini',segmentacion:'ini',carteleria:'ini',elpais:'ini',ladiaria:'ini',macro:'ini',socio:'ini',
+  pauta:'dur',destacar:'dur',posteos:'all',reportes:'all',radio:'all',pasito:'all',facal:'all',paseo:'all',solanas:'all',circuito:'all',
+  whatsapp:'sends',email:'sends',influencers:'enf',expectativa:'enf1',push:'fin',sorteo:'fin',reels:'ev',foto:'ev',topic:'ev'};
+var MESC=['ene','feb','mar','abr','may','jun','jul','ago','set','oct','nov','dic'];
+function CAL(){if(!S.cal)S.cal={on:false,ev:'',n:4,enf:[],ov:{}};if(!S.cal.ov)S.cal.ov={};if(!S.cal.enf)S.cal.enf=[];return S.cal}
+function calOn(){var c=CAL();return !!(c.on&&c.ev)}
+function calWeeks(){
+  var c=CAL(),n=Math.min(8,Math.max(2,Number(c.n)||4)),W=[];
+  var p=String(c.ev||'').split('-'),E=p.length===3?new Date(+p[0],+p[1]-1,+p[2]):null;if(E&&isNaN(E))E=null;
+  var enf=c.enf.filter(function(i){return i>=1&&i<=n}).sort();if(!enf.length)enf=n>=3?[n-1,n]:[n];
+  for(var i=1;i<=n;i++){var lab='';
+    if(E){var b=new Date(E);b.setDate(E.getDate()-7*(n-i));var a=new Date(b);a.setDate(b.getDate()-6);lab=a.getDate()+(a.getMonth()!==b.getMonth()?' '+MESC[a.getMonth()]:'')+' – '+b.getDate()+' '+MESC[b.getMonth()]}
+    W.push({i:i,lab:lab,enf:enf.indexOf(i)>=0})}
+  return {n:n,W:W,enf:enf,E:E};
+}
+function calPlan(rows){
+  var k=calWeeks(),n=k.n,c=CAL();
+  return {k:k,rows:rows.map(function(d){
+    var it=item(d),bid=String(d.id).replace(/~x$/,''),ph=PHASE[bid]||'all',ov=c.ov[d.id]||'',cells=[],ev=false,q=Math.max(1,Number(it.cant)||1),i,snd=ph==='sends';
+    for(i=0;i<n;i++)cells.push(0);
+    if(ov==='ev'){ph='ev';snd=false}else if(ov==='all'){ph='all';snd=false}else if(/^\d+$/.test(ov)&&+ov>=1&&+ov<=n){cells[+ov-1]=snd?q:1;ph='x'}
+    if(ph==='ini')cells[0]=1;
+    else if(ph==='all')for(i=0;i<n;i++)cells[i]=1;
+    else if(ph==='dur'){var dd=bid==='destacar'?q:Number(it.dias)||0,w=dd?Math.min(n,Math.ceil(dd/7)):n;for(i=n-w;i<n;i++)cells[i]=1}
+    else if(ph==='sends'){var e=k.enf.slice().reverse();for(i=0;i<q;i++)cells[e[i%e.length]-1]++}
+    else if(ph==='enf')k.enf.forEach(function(x){cells[x-1]=1});
+    else if(ph==='enf1')cells[k.enf[0]-1]=1;
+    else if(ph==='fin')cells[n-1]=1;
+    else if(ph==='ev')ev=true;
+    var on=[];cells.forEach(function(v,j){if(v)on.push(j+1)});
+    return {d:d,name:rowInfo(d).name,cells:cells,ev:ev,sends:snd,txt:ev?'Día del evento':on.length===n?'Todas las semanas':'Semana'+(on.length>1?'s ':' ')+on.join(', ')};
+  })};
+}
+function lista(a){return a.length>1?a.slice(0,-1).join(', ')+' y '+a[a.length-1]:String(a[0])}
+function pageCal(c,num,tot){
+  var P=calPlan(c.rows),k=P.k;
+  var h='<section class="page pcal'+(P.rows.length>16?' sm':'')+'">'+head('Calendario de acciones')+'<div class="pb"><span class="pill">Calendario</span><h2>Cuándo pasa <em>cada acción</em></h2><p class="lead">'+(k.E?'Evento: '+fechaLarga(S.cal.ev)+'. ':'')+k.n+' semanas de campaña, con énfasis en la'+(k.enf.length>1?'s semanas ':' semana ')+lista(k.enf)+'.</p>';
+  h+='<table class="ct"><thead><tr><th class="a">Acción</th>'+k.W.map(function(w){return '<th'+(w.enf?' class="e"':'')+'><b>Semana '+w.i+'</b><span>'+w.lab+'</span>'+(w.enf?'<i>Énfasis</i>':'')+'</th>'}).join('')+'<th class="v"><b>Evento</b><span>'+(k.E?k.E.getDate()+' '+MESC[k.E.getMonth()]:'')+'</span></th></tr></thead><tbody>';
+  P.rows.forEach(function(r){h+='<tr><td class="a">'+r.name+'</td>'+r.cells.map(function(v,i){return '<td'+(k.W[i].enf?' class="e"':'')+'>'+(v?'<u'+(k.W[i].enf?' class="s"':'')+'>'+(r.sends?v+(v===1?' envío':' envíos'):'')+'</u>':'')+'</td>'}).join('')+'<td class="v">'+(r.ev?'<u></u>':'')+'</td></tr>'});
+  h+='</tbody></table><div class="cleg"><span><u></u>Acción activa</span><span><u class="s"></u>Acción en semana de énfasis</span><span><u class="k"></u>Día del evento</span></div><p class="cnt">El calendario es orientativo: las fechas exactas se coordinan con el equipo de Marketing de RedTickets.</p></div>'+foot(num,tot)+'</section>';
+  return h;
+}
+function pagesHTML(c){
+  var cal=calOn()&&c.rows.length>0,tot=1+(cal?1:0)+(S.extras?2:0),n=1,h=page1(c,tot);
+  if(cal)h+=pageCal(c,++n,tot);
+  if(S.extras){h+=page2(tot,++n);h+=page3(tot,++n)}
+  return h;
+}
+function calDraw(){
+  var b=$('cal-box');if(!b)return;var c=CAL(),k=calWeeks(),rows=calc().rows,i;
+  var h='<label class="chk"><input type="checkbox" data-cal="on"'+(c.on?' checked':'')+'><span>Incluir la página "Calendario" en el PDF</span></label><div'+(c.on?'':' hidden')+'>';
+  h+='<div class="e-f2"><label class="f"><span>Fecha del evento</span><input type="date" data-cal="ev" value="'+esc(c.ev)+'"></label><label class="f"><span>Semanas de campaña antes del evento</span><select data-cal="n">';
+  for(i=2;i<=8;i++)h+='<option value="'+i+'"'+(k.n===i?' selected':'')+'>'+i+' semanas</option>';
+  h+='</select></label></div>';
+  if(!c.ev)h+='<div class="warn" style="display:block">Cargá la fecha del evento para que la página aparezca en el PDF.</div>';
+  h+='<div class="clab" style="margin-top:8px">¿En qué semanas se pone el énfasis?</div><div class="chips3">'+k.W.map(function(w){return '<button type="button" class="chip'+(c.enf.indexOf(w.i)>=0?' on':'')+'" data-cal-w="'+w.i+'">Semana '+w.i+(w.lab?' · '+w.lab:'')+'</button>'}).join('')+'</div><small class="cal-h">La última semana es la del evento. Si no marcás ninguna, el énfasis va en las dos últimas.</small>';
+  if(rows.length){var P=calPlan(rows);h+='<div class="clab">Cómo quedan distribuidas las acciones</div><div class="cal-l">'+P.rows.map(function(r){var ov=c.ov[r.d.id]||'';
+    return '<label><span><b>'+r.name+'</b><small>'+r.txt+'</small></span><select data-cal-ov="'+r.d.id+'" aria-label="Cuándo va '+r.name+'">'+opts([['','Automático'],['all','Todas las semanas']].concat(k.W.map(function(w){return [String(w.i),'Solo semana '+w.i]})).concat([['ev','Día del evento']]),ov)+'</select></label>'}).join('')+'</div>'}
+  else h+='<small class="cal-h" style="margin-top:14px">Agregá acciones a la propuesta para ver cómo se distribuyen.</small>';
+  b.innerHTML=h+'</div>';
+}
+function calEvt(e){
+  var t=e.target,c=CAL(),w=t.closest&&t.closest('[data-cal-w]');
+  if(e.type==='click'){if(!w)return;var i=Number(w.getAttribute('data-cal-w')),x=c.enf.indexOf(i);if(x>=0)c.enf.splice(x,1);else c.enf.push(i)}
+  else{var f=t.getAttribute('data-cal'),o=t.getAttribute('data-cal-ov');
+    if(f==='on')c.on=t.checked;else if(f==='ev')c.ev=t.value;else if(f==='n'){c.n=Number(t.value);c.enf=c.enf.filter(function(y){return y<=c.n})}
+    else if(o){if(t.value)c.ov[o]=t.value;else delete c.ov[o]}else return}
+  calDraw();update();
+}
+$('form').addEventListener('click',calEvt);$('form').addEventListener('change',calEvt);
+/* ============ Propuestas realizadas, pagas y dashboard ============ */
+var PLK='rt-props-v1', PLT='r', CLOUD=false, EQK='', PLO={};
+try{EQK=localStorage.getItem('rt-eq-k')||''}catch(e){}
+function capi(path,opt){opt=opt||{};opt.headers=Object.assign({'x-edit-key':EQK},opt.headers||{});return fetch('/api/'+path,opt).then(function(r){return r.json().then(function(j){if(!r.ok)throw j;return j})})}
+function plLoc(){try{return JSON.parse(localStorage.getItem(PLK)||'[]')||[]}catch(e){return []}}
 function plPut(a){try{localStorage.setItem(PLK,JSON.stringify(a));return true}catch(e){return false}}
+function actName(id){var b=String(id).replace(/~x$/,''),d=CATALOG.filter(function(x){return x.id===b})[0];return d?d.n+(b!==id?' · adicional':''):'Acción personalizada'}
+function plMeta(c){return {cliente:S.cliente||'',evento:S.evento||'',total:c.rows.length?fmt(c.total):'—',tn:Math.round(norm(c.total).UYU||0),gn:Math.round(norm(c.gift).UYU||0),n:c.rows.length,ai:c.rows.map(function(d){return d.custom?'custom':d.id})}}
+function plStrip(st){var o=JSON.parse(JSON.stringify(st));if(o.logo&&o.logo.length>600000)o.logo=null;return o}
+function plUp(e){return capi('r/'+e.id,{method:'PUT',body:JSON.stringify({st:plStrip(e.st),meta:{cliente:e.cliente,evento:e.evento,total:e.total,tn:e.tn,gn:e.gn,n:e.n,ai:e.ai}})})}
+function plMark(id){var a=plLoc();a.forEach(function(x){if(x.id===id)x.up=1});plPut(a)}
 function plSave(){
-  if(!S.pid)S.pid='p'+Date.now();
-  var a=plAll(),c=calc(),old=a.filter(function(x){return x.id===S.pid})[0];
-  var e={id:S.pid,at:Date.now(),paid:!!(old&&old.paid),paidAt:old&&old.paidAt||0,cliente:S.cliente||'',evento:S.evento||'',total:c.rows.length?fmt(c.total):'—',n:c.rows.length,tn:c.total.UYU||0,gn:c.gift.UYU||0,acts:c.rows.map(function(d){return d.n+(d.xof?' · adicional':'')}),st:JSON.parse(JSON.stringify(S))};
+  if(!S.pid)S.pid='p'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+  var a=plLoc(),c=calc(),old=a.filter(function(x){return x.id===S.pid})[0];
+  var e=Object.assign({id:S.pid,at:Date.now(),paid:!!(old&&old.paid),paidAt:old&&old.paidAt||0,st:JSON.parse(JSON.stringify(S))},plMeta(c));
   a=[e].concat(a.filter(function(x){return x.id!==S.pid}));
   if(!plPut(a)){e.st.logo=null;plPut(a)}
   save();
+  if(CLOUD)plUp(e).then(function(){plMark(e.id)}).catch(function(){say('PDF descargado, pero no se pudo guardar la propuesta en la nube: quedó solo en este navegador.')});
 }
+function plSync(){plLoc().filter(function(x){return !x.up&&x.st}).forEach(function(x){
+  if(!x.ai)x.ai=(x.acts||[]).map(function(n){var b=n.replace(' · adicional',''),d=CATALOG.filter(function(y){return y.n===b})[0];return d?d.id+(b!==n?'~x':''):'custom'});
+  plUp(x).then(function(){if(x.paid)capi('r/'+x.id+'/paid',{method:'POST',body:'{"paid":true}'}).catch(function(){});plMark(x.id)}).catch(function(){})})}
+function plAll(){
+  var loc=plLoc();loc.forEach(function(x){if(!x.acts)x.acts=(x.ai||[]).map(actName)});
+  if(!CLOUD)return Promise.resolve(loc);
+  return capi('props').then(function(j){
+    var ids={},now=Date.now(),out=(j.items||[]).map(function(m){ids[m.id]=1;m.acts=(m.ai||[]).map(actName);return m});
+    loc.forEach(function(x){if(!ids[x.id]&&(!x.up||now-x.at<180000))out.push(x)});
+    out=out.filter(function(x){var o=PLO[x.id];if(o&&now-o.t<180000){if(o.del)return false;if('paid' in o){x.paid=o.paid;x.paidAt=o.paidAt}}return true});
+    out.sort(function(a,b){return (b.at||0)-(a.at||0)});return out;
+  }).catch(function(){return loc});
+}
+function plGet(id){var l=plLoc().filter(function(x){return x.id===id})[0];if(l&&l.st)return Promise.resolve(l.st);return capi('r/'+id).then(function(j){return j.st})}
 function plDate(t){var d=new Date(t);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()}
 function plDraw(){
   document.querySelectorAll('#pl [data-tab]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-tab')===PLT)});
-  if(PLT==='d'){$('pl-l').innerHTML=plDash();return}
-  var a=plAll().filter(function(x){return PLT==='p'?x.paid:true});
-  $('pl-l').innerHTML=a.length?a.map(function(x){
-    return '<div class="pl-i" data-id="'+x.id+'"><div class="pl-d"><strong>'+(esc(x.evento)||'Evento sin nombre')+'</strong><span>'+(esc(x.cliente)||'Productora sin nombre')+' · '+x.n+(x.n===1?' acción':' acciones')+' · '+(x.paid&&x.paidAt?'paga el '+plDate(x.paidAt):'generada el '+plDate(x.at))+'</span>'+(x.paid?'<span class="pl-paid">Paga</span>':'')+'</div><div class="pl-tot">'+esc(x.total)+'</div>'+
-      '<div class="pl-a"><button type="button" class="btn or" data-pa="pdf">Descargar PDF</button><button type="button" class="btn" data-pa="open">Abrir y editar</button><button type="button" class="btn" data-pa="paid">'+(x.paid?'Quitar de pagas':'Marcar como paga')+'</button><button type="button" class="btn gh" data-pa="del">Eliminar</button></div></div>'}).join('')
-    :'<div class="pl-e">'+(PLT==='p'?'Todavía no marcaste ninguna propuesta como paga. Hacelo desde "Realizadas" con el botón "Marcar como paga".':'Todavía no hay propuestas. Aparecen acá cuando descargás el PDF de una.')+'</div>';
+  $('pl-note').textContent=CLOUD?'Guardado en la nube: lo ve todo el equipo, desde cualquier dispositivo. Incluye las solicitudes que envían los productores.':'Se guardan en este navegador cada vez que descargás el PDF de una propuesta.';
+  if(!$('pl-l').firstChild)$('pl-l').innerHTML='<div class="pl-e">Cargando…</div>';
+  var tab=PLT;
+  plAll().then(function(all){
+    if(tab!==PLT)return;
+    if(PLT==='d'){$('pl-l').innerHTML=plDash(all);return}
+    var a=all.filter(function(x){return PLT==='p'?x.paid:x.src!=='prod'});
+    $('pl-l').innerHTML=a.length?a.map(function(x){
+      var pr=x.src==='prod',ct=[x.cn,x.cp,x.ce].filter(Boolean).map(esc).join(' · ');
+      return '<div class="pl-i" data-id="'+x.id+'"><div class="pl-d"><strong>'+(esc(x.evento)||'Evento sin nombre')+'</strong><span>'+(esc(x.cliente)||'Productora sin nombre')+' · '+(x.n||0)+(x.n===1?' acción':' acciones')+' · '+(pr?'solicitada el '+plDate(x.at):x.paid&&x.paidAt?'paga el '+plDate(x.paidAt):'generada el '+plDate(x.at))+'</span>'+(pr&&ct?'<span>'+ct+'</span>':'')+(x.paid?'<span class="pl-paid">Paga</span>':'')+(pr?' <span class="pl-paid pl-src">Solicitud de productor'+(x.via?' · '+esc(x.via):'')+'</span>':'')+'</div><div class="pl-tot">'+esc(x.total||'—')+'</div>'+
+        '<div class="pl-a"><button type="button" class="btn or" data-pa="pdf">Descargar PDF</button><button type="button" class="btn" data-pa="open">Abrir y editar</button><button type="button" class="btn" data-pa="paid">'+(x.paid?'Quitar de pagas':'Marcar como paga')+'</button><button type="button" class="btn gh" data-pa="del">Eliminar</button></div></div>'}).join('')
+      :'<div class="pl-e">'+(PLT==='p'?'Todavía no hay propuestas pagas. Entran acá las que marcás con "Marcar como paga" y las solicitudes que envían los productores desde su panel.':'Todavía no hay propuestas. Aparecen acá cuando descargás el PDF de una.')+'</div>';
+  });
 }
-function plDash(){
-  var a=plAll(),pg=a.filter(function(x){return x.paid});
-  if(!a.length)return '<div class="pl-e">Todavía no hay datos. El dashboard se arma con las propuestas que vas generando y las que marcás como pagas.</div>';
+function plDash(a){
+  var pg=a.filter(function(x){return x.paid}),mk=a.filter(function(x){return x.src!=='prod'});
+  if(!a.length)return '<div class="pl-e">Todavía no hay datos. El dashboard se arma con las propuestas que generás, las que marcás como pagas y las solicitudes de los productores.</div>';
   var sum=function(l,k){return l.reduce(function(t,x){return t+(Number(x[k])||0)},0)};
-  var h='<div class="ds-k"><div><span>Propuestas realizadas</span><b>'+a.length+'</b></div><div><span>Propuestas pagas</span><b>'+pg.length+'</b></div><div><span>Monto contratado</span><b>'+mon(sum(pg,'tn'),'UYU')+'</b></div><div><span>Aportó RedTickets</span><b>'+mon(sum(pg,'gn'),'UYU')+'</b></div></div>';
+  var h='<div class="ds-k"><div><span>Propuestas realizadas</span><b>'+mk.length+'</b></div><div><span>Pagas / contratadas</span><b>'+pg.length+'</b></div><div><span>Monto contratado</span><b>'+mon(sum(pg,'tn'),'UYU')+'</b></div><div><span>Aportó RedTickets</span><b>'+mon(sum(pg,'gn'),'UYU')+'</b></div></div>';
   var cnt=function(l){var m={};l.forEach(function(x){(x.acts||[]).forEach(function(n){m[n]=(m[n]||0)+1})});return m};
   var bars=function(rows,max){return rows.map(function(r){return '<div class="ds-r"><div class="ds-n"><strong>'+esc(r[0])+'</strong><span>'+r[2]+'</span></div><div class="ds-b"><i style="width:'+Math.max(3,Math.round(r[1]/max*100))+'%"></i></div></div>'}).join('')};
   var cp=cnt(pg),ca=cnt(a),names=Object.keys(ca).sort(function(x,y){return (cp[y]||0)-(cp[x]||0)||ca[y]-ca[x]}).slice(0,12);
-  var mx=Math.max.apply(null,names.map(function(n){return Math.max(cp[n]||0,pg.length?0:ca[n])}).concat([1]));
-  h+='<div class="ds-h">Qué es lo que más se pide</div>'+(names.length?bars(names.map(function(n){var v=pg.length?(cp[n]||0):ca[n];return [n,v,(cp[n]||0)+' en pagas · '+ca[n]+' en realizadas']}),mx):'<div class="pl-e">Sin acciones cargadas.</div>');
+  var mx=Math.max.apply(null,names.map(function(n){return pg.length?(cp[n]||0):ca[n]}).concat([1]));
+  h+='<div class="ds-h">Qué es lo que más se pide</div>'+(names.length?bars(names.map(function(n){var v=pg.length?(cp[n]||0):ca[n];return [n,v,(cp[n]||0)+' en pagas · '+ca[n]+' en total']}),mx):'<div class="pl-e">Sin acciones cargadas.</div>');
   var pr={};a.forEach(function(x){var k=(x.cliente||'').trim()||'Productora sin nombre';pr[k]=pr[k]||{r:0,p:0,t:0};pr[k].r++;if(x.paid){pr[k].p++;pr[k].t+=Number(x.tn)||0}});
   var pk=Object.keys(pr).sort(function(x,y){return pr[y].t-pr[x].t||pr[y].p-pr[x].p||pr[y].r-pr[x].r}).slice(0,12),pm=Math.max.apply(null,pk.map(function(k){return pr[k].t}).concat([1]));
-  h+='<div class="ds-h">Qué productoras contratan</div>'+bars(pk.map(function(k){var o=pr[k];return [k,o.t,mon(o.t,'UYU')+' · '+o.p+(o.p===1?' paga':' pagas')+' de '+o.r+(o.r===1?' propuesta':' propuestas')]}),pm);
+  h+='<div class="ds-h">Qué productoras contratan</div>'+bars(pk.map(function(k){var o=pr[k];return [k,o.t,mon(o.t,'UYU')+' · '+o.p+(o.p===1?' paga':' pagas')+' de '+o.r]}),pm);
   return h;
 }
-function plOpen(t){PLT=t||'r';plDraw();$('pl').hidden=false}
+function plOpen(t){PLT=t||'r';$('pl-l').innerHTML='';plDraw();$('pl').hidden=false}
 document.addEventListener('click',function(e){var o=e.target.closest('[data-pl]');if(o){e.preventDefault();plOpen(o.getAttribute('data-pl'))}});
 $('pl-x').addEventListener('click',function(){$('pl').hidden=true});
 $('pl').addEventListener('click',async function(e){
   if(e.target===this){this.hidden=true;return}
   var tb=e.target.closest('[data-tab]');if(tb){PLT=tb.getAttribute('data-tab');plDraw();return}
   var b=e.target.closest('[data-pa]');if(!b)return;
-  var id=b.closest('.pl-i').getAttribute('data-id'),a=plAll(),x=a.filter(function(y){return y.id===id})[0];if(!x)return;
+  var id=b.closest('.pl-i').getAttribute('data-id'),a=plLoc(),x=a.filter(function(y){return y.id===id})[0];
   var k=b.getAttribute('data-pa');
-  if(k==='paid'){x.paid=!x.paid;x.paidAt=x.paid?Date.now():0;plPut(a);plDraw()}
-  else if(k==='del'){if(b.getAttribute('data-sure')){plPut(a.filter(function(y){return y.id!==id}));if(S.pid===id){delete S.pid;save()}plDraw()}else{b.setAttribute('data-sure','1');b.textContent='¿Eliminar? Tocá de nuevo'}}
-  else if(k==='open'){S=JSON.parse(JSON.stringify(x.st));S.pid=x.id;buildForm();update();$('pl').hidden=true;say('Propuesta abierta: '+(x.evento||x.cliente||'sin nombre'));window.scrollTo(0,0)}
-  else if(k==='pdf'){var cur=S;S=JSON.parse(JSON.stringify(x.st));try{await exportA4(b,true)}finally{S=cur}}
+  try{
+    if(k==='paid'){var np=b.textContent==='Marcar como paga',t=Date.now();
+      if(x){x.paid=np;x.paidAt=np?t:0;plPut(a)}
+      if(CLOUD){b.disabled=true;await capi('r/'+id+'/paid',{method:'POST',body:JSON.stringify({paid:np})});PLO[id]={paid:np,paidAt:np?t:0,t:t}}
+      plDraw()}
+    else if(k==='del'){if(b.getAttribute('data-sure')){
+        if(CLOUD){b.disabled=true;await capi('r/'+id,{method:'DELETE'});PLO[id]={del:1,t:Date.now()}}
+        plPut(a.filter(function(y){return y.id!==id}));if(S.pid===id){delete S.pid;save()}plDraw()
+      }else{b.setAttribute('data-sure','1');b.textContent='¿Eliminar? Tocá de nuevo'}}
+    else if(k==='open'){var st=await plGet(id);S=Object.assign(base(),JSON.parse(JSON.stringify(st)));S.pid=id.charAt(0)==='p'?id:undefined;if(!S.pid)delete S.pid;buildForm();update();$('pl').hidden=true;say('Propuesta abierta: '+(S.evento||S.cliente||'sin nombre'));window.scrollTo(0,0)}
+    else if(k==='pdf'){var st2=await plGet(id),cur=S;S=Object.assign(base(),JSON.parse(JSON.stringify(st2)));try{await exportA4(b,true)}finally{S=cur}}
+  }catch(err){b.disabled=false;say('No se pudo completar la acción. Revisá la conexión y probá de nuevo.')}
 });
 
 /* ============ Link para el productor ============ */
@@ -1750,10 +1889,14 @@ function renderPV(){
     L.push('ORDEN DE MARKETING · REDTICKETS',div,'N.º de solicitud: RT-'+now.getFullYear()+'-'+now.getTime().toString(36).toUpperCase(),'Fecha: '+now.toLocaleDateString('es-UY'),'','DATOS DEL SOLICITANTE',div,
       'Nombre: '+($('rq-name').value.trim()||'A confirmar'),'Productora: '+($('rq-prod').value.trim()||'A confirmar'),'Evento: '+($('rq-event').value.trim()||'A confirmar'),'Teléfono: '+($('rq-phone').value.trim()||'A confirmar'),'Email: '+($('rq-email').value.trim()||'A confirmar'),'','DETALLE',div);
     c.rows.forEach(function(d){var o=rowInfo(d),n=o.name.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"');L.push(pad(n+(o.qty!==1?' ('+o.qty+')':''),o.txt))});
+    if(calOn()){var cp=calPlan(c.rows);L.push('','CALENDARIO',div,'Fecha del evento: '+fechaLarga(S.cal.ev),'Semanas de campaña: '+cp.k.n,'Énfasis: semana'+(cp.k.enf.length>1?'s ':' ')+lista(cp.k.enf));cp.rows.forEach(function(r){L.push(pad(r.name.replace(/&amp;/g,'&'),r.txt))})}
     L.push(div,pad(liqLabel().toUpperCase(),fmt(c.total)),'','Este monto se descontará de la liquidación del evento.','Esta inversión es por evento.');
     return L.join('\n');
   }
-  function record(via){if(!PVSLUG)return;try{fetch('/api/s/'+PVSLUG,{method:'POST',body:JSON.stringify({state:encObj(),total:fmt(calc().total),via:via,contact:{name:$('rq-name').value.trim(),event:[$('rq-prod').value.trim(),$('rq-event').value.trim()].filter(Boolean).join(' — '),phone:$('rq-phone').value.trim(),email:$('rq-email').value.trim()}})}).catch(function(){})}catch(e){}}
+  function record(via){
+    if(HOSTED&&PROD){try{var rc=calc();if(rc.rows.length){if(!window.RQID)window.RQID='q'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+      fetch('/api/req/'+window.RQID,{method:'POST',keepalive:true,body:JSON.stringify({st:plStrip(S),meta:plMeta(rc),via:via,contact:{name:$('rq-name').value.trim(),phone:$('rq-phone').value.trim(),email:$('rq-email').value.trim()}})}).catch(function(){})}}catch(e){}}
+    if(!PVSLUG)return;try{fetch('/api/s/'+PVSLUG,{method:'POST',body:JSON.stringify({state:encObj(),total:fmt(calc().total),via:via,contact:{name:$('rq-name').value.trim(),event:[$('rq-prod').value.trim(),$('rq-event').value.trim()].filter(Boolean).join(' — '),phone:$('rq-phone').value.trim(),email:$('rq-email').value.trim()}})}).catch(function(){})}catch(e){}}
   $('rq-prod').addEventListener('input',function(){S.cliente=this.value;update()});
   $('rq-event').addEventListener('input',function(){S.evento=this.value;update();var px=$('px-ev');if(px&&!px.getAttribute('data-t'))px.value=this.value});
   $('px-ev').addEventListener('input',function(){this.setAttribute('data-t','1')});
@@ -1780,6 +1923,7 @@ var mp=HOSTED&&location.pathname.match(/^\/p\/([a-z0-9][a-z0-9-]*)\/?$/);
 function startEditor(){
   buildForm(); update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
+  if(HOSTED)fetch('/api/status').then(function(r){return r.json()}).then(function(j){CLOUD=!!(j&&j.kv);if(CLOUD)plSync()}).catch(function(){});
   if(HOSTED&&GUARDADO)fetch('/api/status').then(function(r){return r.json()}).then(function(j){API_READY=!!(j&&j.ready);document.body.classList.toggle('api-on',API_READY)}).catch(function(){});
 }
 if(mp){
@@ -1794,7 +1938,7 @@ if(mp){
   try{PVSRC=parseCode(m0[1]);S=fromObj(PVSRC);PV=true}catch(e){PV=false}
   if(PV)renderPV();else startEditor();
 }else{
-  var EQH='2cd1b03e7960f799d111619341c978ac090e036b65659f7513fec3dbb6bd7f1d', okEq=false; try{okEq=localStorage.getItem('rt-eq-ok')===EQH}catch(e){}
+  var EQH='2cd1b03e7960f799d111619341c978ac090e036b65659f7513fec3dbb6bd7f1d', okEq=false; try{okEq=localStorage.getItem('rt-eq-ok')===EQH&&!!localStorage.getItem('rt-eq-k')}catch(e){}
   var wantEq=/^\/equipo(\/|\/index\.html)?$/.test(location.pathname)||location.hash==='#equipo';
   var eq=HOSTED?(wantEq&&okEq):location.hash!=='#productores';
   if(HOSTED)PROD_URL=location.origin+'/';
@@ -1802,7 +1946,7 @@ if(mp){
   function goEq(){if(location.hash==='#equipo')location.reload();else{location.href=location.origin+'/#equipo'}}
   if(eq){
     var tp=$('to-prod');tp.href=HOSTED?'/':'#productores';if(!HOSTED)tp.removeAttribute('target');
-    if(HOSTED){var eo=$('eq-out');eo.hidden=false;eo.addEventListener('click',function(){try{localStorage.removeItem('rt-eq-ok')}catch(e){}location.href=location.origin+'/'})}
+    if(HOSTED){var eo=$('eq-out');eo.hidden=false;eo.addEventListener('click',function(){try{localStorage.removeItem('rt-eq-ok');localStorage.removeItem('rt-eq-k')}catch(e){}location.href=location.origin+'/'})}
     startEditor();
   }else{
     PROD=true;PV=true;PVSRC=null;S=base();renderPV();
@@ -1816,7 +1960,7 @@ if(mp){
         var v=$('lg-k').value.trim();
         crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){
           var h=Array.prototype.map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('');
-          if(h===EQH){try{localStorage.setItem('rt-eq-ok',EQH)}catch(e){}okEq=true;goEq()}else{$('lg-e').hidden=false;$('lg-k').select()}
+          if(h===EQH){try{localStorage.setItem('rt-eq-ok',EQH);localStorage.setItem('rt-eq-k',v)}catch(e){}okEq=true;goEq()}else{$('lg-e').hidden=false;$('lg-k').select()}
         });
       });
       if(wantEq)lgOpen();
