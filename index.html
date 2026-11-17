@@ -90,7 +90,6 @@ textarea{resize:vertical;min-height:72px}
 .it-f .w2{grid-column:1/-1}
 .it-f .row3{grid-column:1/-1;display:grid;grid-template-columns:130px 1fr;gap:8px}
 .it-f .row3 .span2{grid-column:2/-1}
-.gr-row:has([data-g]){display:none!important}
 .gr-row{display:flex;align-items:center;gap:10px;margin-top:2px}
 .gr-row small{color:var(--mut);font-size:11px;line-height:1.3}
 .gr{flex:none;border:1px solid #cfcfd6;background:#fff;border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer}
@@ -203,13 +202,13 @@ table.t{width:100%;border-collapse:collapse}
 .t .n{color:var(--o);font-weight:600;width:2.1em;font-variant-numeric:tabular-nums}
 .t .c{text-align:center;white-space:nowrap}
 .t .v{text-align:right;white-space:nowrap;padding-right:0;font-weight:600;font-variant-numeric:tabular-nums}
-.t .v small{font-weight:400}
+.t .v small{font-weight:400;white-space:normal}
 .t th.v,.t th.c{padding-right:0}
 .when{display:inline-block;background:#f4f4f6;border-radius:99px;padding:.18em .8em;font-size:.92em}
 .tag{display:inline-block;font-size:.84em;font-weight:600;border-radius:99px;padding:.12em .7em}
 .tag.b{background:#e9f8ee;color:var(--green)}
 .tag.c{background:#fff1e6;color:var(--o2)}
-.tag.n{background:#ececf0;color:#55555d}
+.tag.co{background:#ececf0;color:#55555d}
 .empty{background:#f4f4f6;border-radius:16px;padding:2.6em;text-align:center;color:var(--mut)}
 .tot{margin-top:1.2em;background:#0e0e12;color:#fff;border-radius:1.5em;padding:1.25em 1.7em;display:flex;justify-content:space-between;align-items:center;gap:2em}
 .tot .l span{display:block;font-size:.74em;letter-spacing:.1em;text-transform:uppercase;color:#a9a9b3;font-weight:500}
@@ -271,6 +270,10 @@ table.t{width:100%;border-collapse:collapse}
 .blog{flex:none;margin-top:12px;background:#fff1e6;border-radius:99px;padding:9px 18px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#6b4a35}
 .blog b{color:var(--o2);font-weight:600}
 .blog+.firma{margin-top:8px}
+.blog.pcta{background:#FF6600;color:#fff;font-size:12px;padding:11px 20px}
+.blog.pcta span{font-weight:600}
+.blog.pcta b{color:#fff;background:rgba(0,0,0,.2);border-radius:99px;padding:4px 14px}
+.blog.pcta+.blog{margin-top:6px}
 .acts-b{display:flex;flex-direction:column;gap:6px;align-items:stretch}.acts-b .btn{text-align:center}.btn[disabled]{opacity:.6}
 .alz{margin-top:12px;border-radius:18px;padding:10px 16px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;background-color:#FF6600;background-image:radial-gradient(circle at 0% 0%,#ff9a3d 0%,rgba(255,154,61,0) 45%),radial-gradient(circle at 100% 120%,#b83300 0%,rgba(184,51,0,0) 55%)}
 .alz b{display:block;font-family:"Inter Tight",Inter,sans-serif;font-weight:400;font-size:17px;letter-spacing:-.03em;line-height:1.1}
@@ -353,12 +356,12 @@ body.api-on .drw-off{display:none}
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
     <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
-    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button">Generar nueva propuesta</button></div>
+    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver panel de productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a></div>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
-    <span class="tagp">Marketing · uso interno</span>
+    <span class="tagp">Panel de Marketing · uso interno</span>
     <h1>Armá la propuesta <em>de marketing</em></h1>
-    <p>Elegí las acciones para el evento, definí cuándo se hacen y cuánto valen. Al final descargás el PDF o generás un link para mandarle al productor con todo ya marcado.</p>
+    <p>Elegí las acciones para el evento, definí cuándo se hacen y cuáles van sin costo, por canje o a coordinar. Al final descargás el PDF, que lleva un botón para que el productor sume más acciones desde su panel.</p>
     <div class="e-cta"><a class="btn" href="#acciones">Elegir acciones</a><a class="btn gh" href="#vista">Ver vista previa</a></div>
   </div></div>
   <div id="form"></div>
@@ -923,7 +926,6 @@ function item(def){
   if(def.lock){it.mode='coord';it.cuando=''}
   if(it.mode==='bonificado'){it.mode='valor';it.gratis=true}
   if(PV&&PVSRC&&PVSRC.items&&PVSRC.items[def.id]&&!PVSRC.items[def.id].extra){it.on=true;if(it.mode==='valor')it.gratis=true}
-  if(!PV&&it.on&&it.mode==='valor'&&!it.extra)it.gratis=true;
   if(!it.cur)it.cur='UYU';
   if(def.calc==='pauta'){if(it.monto==null||it.monto==='')it.monto=4000;if(it.dias==null||it.dias==='')it.dias=7;if(!Array.isArray(it.plats))it.plats=[]}
   if(def.calc==='dest'){if(!it.dinit){it.dinit=1;if(!Number(it.cant)||it.cant==1)it.cant=7}if(POS[it.pos]&&(it.precio===''||it.precio==null)){it.precio=POS[it.pos].p;it.cur=POS[it.pos].c}}
@@ -1005,7 +1007,7 @@ function calcHTML(def){
   R+='<div class="it-st"></div><div class="it-f">'+cuandoHTML(it,'w2');
   if(def.calc==='pauta')R+='<label class="w2"><span>Monto exacto ($)</span><input type="number" min="0" step="any" data-f="monto" value="'+esc(it.monto)+'"></label>';
   else R+='<label class="w2"><span>'+(def.tier?'Valor por envío':def.perday?'Valor por día':'Valor')+' en $ (editable)</span><input type="number" min="0" step="any" data-f="precio" value="'+esc(it.precio)+'"></label>';
-  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">La asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado.</small></div></div>';
+  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>Lo asume RedTickets: sale con el precio tachado y suma a "Apoya RedTickets".</small></div></div>';
   R+='<label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n)+' en la propuesta"><span></span></label>';
   return '<div class="it calc'+(it.on?' on':'')+'" data-id="'+def.id+'"><div class="cl">'+L+'</div><div class="cr">'+R+'</div></div>';
 }
@@ -1039,7 +1041,7 @@ function itemHTML(def){
     h+='<label class="span2" data-show="coord"'+(it.mode==='coord'?'':' hidden')+'><span>Valor</span><input type="text" value="Se coordina con Marketing" disabled></label></div>';
   }
   if(def.unlim)h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.ilim?' on':'')+'" data-u="1" aria-pressed="'+(it.ilim?'true':'false')+'">Ilimitado</button><small>La cantidad figura como "Ilimitado" en la propuesta.</small></div>';
-  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">La asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado.</small></div>';
+  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>Lo asume RedTickets: sale con el precio tachado y suma a "Apoya RedTickets".</small></div>';
   if(def.custom) h+='<div class="w2"><button class="x" type="button" data-del="'+def.id+'">Eliminar esta acción personalizada</button></div>';
   h+='</div><label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n||'acción')+' en la propuesta"><span></span></label></div>';
   return h;
@@ -1078,7 +1080,7 @@ function buildForm(){
   v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['inc','Aclarar "IVA inc."'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
-    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones','Acciones adicionales','Sumá las adicionales <em>que quieras</em>','Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>que asume RedTickets</em>','Todo lo que agregues acá lo asume RedTickets: el productor lo ve en verde, sin costo, y no lo puede modificar. Después, desde el link, puede sumar las adicionales que quiera, que sí tienen costo.',a))+
+    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones',PROD?'Acciones':'Acciones adicionales',PROD?'Elegí las acciones <em>para tu evento</em>':'Sumá las adicionales <em>que quieras</em>',PROD?'Usá las calculadoras para definir volúmenes, días y plataformas, y agregá lo que quieras a tu propuesta. Las pantallas se obtienen por canje de entradas y las alianzas se coordinan con el equipo de Marketing.':'Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>de la propuesta</em>','En cada una definís cuándo se hace, la cantidad y el valor. Con "Sin costo" la asume RedTickets; en "Tipo" podés pasarla a canje o a coordinar.',a))+
     sec('valores','Paso 3','Valores y <em>total</em>','Cómo se muestra el total de la propuesta.',v)+
     '<datalist id="cuando">'+CUANDO.map(function(c){return '<option value="'+c+'">'}).join('')+'</datalist>';
   drawLogoPrev();
@@ -1094,7 +1096,7 @@ $('form').addEventListener('input',function(e){
   var f=t.getAttribute('data-f'), c=t.getAttribute('data-c'), it=item(def);
   if(c){def[c]=t.value; if(c==='n')box.querySelector('.it-h b').textContent=t.value||'Acción personalizada';}
   if(f==='on'){it.on=t.checked;box.classList.toggle('on',it.on);
-    if(!PV&&it.mode==='valor'){it.gratis=it.on?true:!!def.gratis;it.extra=false}
+    if(!PV){it.gratis=!!def.gratis;it.extra=false;var gb=box.querySelector('[data-g]');if(gb){gb.classList.toggle('on',it.gratis);gb.setAttribute('aria-pressed',String(it.gratis))}}
     if(PV)it.extra=it.on;
     if(def.calc==='dest'&&it.on&&!POS[it.pos]){it.pos=1;it.precio=POS[1].p;it.cur=POS[1].c;box.outerHTML=itemHTML(def)}}
   else if(f==='dest'){it.dest=Number(t.value);it.precio=tierPrice(def,it.dest);it.cur='UYU'}
@@ -1138,7 +1140,7 @@ $('form').addEventListener('change',function(e){
   var r=new FileReader(); r.onload=function(){S.logo=r.result;drawLogoPrev();update()}; r.readAsDataURL(f);
 });
 $('nueva').addEventListener('click',function(){
-  if(PV){S=fromObj(PVSRC);buildForm();update();say('Volviste a la propuesta inicial.');return}
+  if(PV){S=fromObj(PVSRC);buildForm();update();say(PROD?'Selección vaciada.':'Volviste a la propuesta inicial.');return}
   var b=base(); ['cliente','evento','fecha','validez','duracion','intro','notas','desc'].forEach(function(k){S[k]=b[k]});
   S.custom.forEach(function(c){delete S.items[c.id]}); S.custom=[];
   for(var id in S.items){S.items[id].on=false;S.items[id].cuando='';S.items[id].cant=1;S.items[id].gratis=false;S.items[id].ilim=false;S.items[id].cuo=false;S.items[id].extra=false}
@@ -1149,7 +1151,8 @@ function say(t){$('msg').textContent=t||''}
 /* ============ Páginas ============ */
 function head(label){return '<div class="ph"><img src="'+(S.logo||LOGO)+'" alt="RedTickets"><div class="r">'+label+'</div></div>'}
 function foot(n,tot){return '<div class="pf"><span>RedTickets · Marketing</span><span>redtickets.uy</span><span>'+n+' / '+tot+'</span></div>'}
-function blog(){return '<div class="blog"><span>Conocé más sobre lo que hacemos en nuestro blog</span><b>blog.redtickets.net →</b></div>'}
+function blog(){return '<div class="blog" data-href="https://blog.redtickets.net/#home"><span>Conocé más sobre lo que hacemos en nuestro blog</span><b>blog.redtickets.net →</b></div>'}
+function pcta(){return '<div class="blog pcta" data-href="'+PROD_URL+'"><span>¿Querés agregar más acciones al evento?</span><b>Conseguilas acá →</b></div>'}
 function firma(){
   return '<div class="sig"><img src="'+FOTO_L+'" alt=""><div><b>Lorenzo Sansone</b><span>Gerente de Marketing</span><span><a>lorenzo@redtickets.uy</a> · 094 144 031</span></div></div>'+
          '<div class="sig"><img src="'+FOTO_A+'" alt=""><div><b>Agustina Globski</b><span>Asistente de Marketing</span><span><a>agustina@redtickets.uy</a> · 093 333 896</span></div></div>';
@@ -1168,7 +1171,7 @@ function rowInfo(d){
   if(d.tier)extra=' '+Number(it.dest).toLocaleString('es-UY')+' '+(d.unit||'destinatarios')+' por envío.';
   if(d.calc!=='pauta'&&q>1)unit=mon(it.precio,it.cur)+(d.tier?' por envío':d.perday?' por día':' c/u');
   if(it.mode==='canje'){v='<span class="tag c">Canje</span>'+(it.cond?'<small>'+esc(it.cond)+'</small>':'');txt='Canje'+(it.cond?': '+it.cond:'')}
-  else if(it.mode==='coord'){v='<span class="tag n">A coordinar</span><small>Con Marketing de RedTickets</small>';txt='A coordinar con el equipo de Marketing de RedTickets'}
+  else if(it.mode==='coord'){v='<span class="tag co">A coordinar</span><small>Con Marketing de RedTickets</small>';txt='A coordinar con el equipo de Marketing de RedTickets'}
   else if(it.gratis){v=(val>0?'<s>'+mon(val,it.cur)+'</s>':'')+'<span class="tag b">Sin costo</span>';txt='Sin costo'+(val>0?' (valor '+mon(val,it.cur)+')':'')}
   else{v=mon(val,it.cur)+(unit?'<small>'+unit+'</small>':'');txt=mon(val,it.cur)}
   var det=d.pd||d.d;
@@ -1208,7 +1211,7 @@ function page1(c,tot){
     h+='</tbody></table>'+totHTML(c);
   }
   if(S.notas.trim())h+='<div class="notas"><span>Notas</span>'+esc(S.notas.trim())+'</div>';
-  h+='</div>'+blog()+'<div class="firma">'+firma()+'</div>'+foot(1,tot)+'</section>';
+  h+='</div>'+(PV?'':pcta())+blog()+'<div class="firma">'+firma()+'</div>'+foot(1,tot)+'</section>';
   return h;
 }
 function card(n,d,cls){return '<div class="card'+(cls?' '+cls:'')+'"><b>'+n+'</b><p>'+d+'</p></div>'}
@@ -1321,7 +1324,7 @@ var MCSS='*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin
 '.act .t{display:flex;gap:10px}.act .n{color:#FF6600;font-weight:600;font-size:13px;padding-top:2px}.act b.nm{display:block;font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.25}.act p{margin:3px 0 0;font-size:13.5px;color:#6b6b73;line-height:1.4}'+
 '.act .b{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:auto}.act .m{display:flex;gap:6px;flex-wrap:wrap}.act .m span{background:#fff;border-radius:99px;padding:4px 11px;font-size:12.5px}'+
 '.act .v{text-align:right;font-weight:600;font-size:16px;white-space:nowrap}.act .v small{display:block;font-weight:400;font-size:12px;color:#6b6b73;white-space:normal}.act .v s{color:#a3a3ab;font-weight:400;margin-right:6px}'+
-'.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:99px;padding:2px 10px}.tag.b{background:#e0f5e7;color:#12803a}.tag.c{background:#ffe6d2;color:#e05a00}.tag.n{background:#e6e6ea;color:#55555d}'+
+'.tag{display:inline-block;font-size:12.5px;font-weight:600;border-radius:99px;padding:2px 10px}.tag.b{background:#e0f5e7;color:#12803a}.tag.c{background:#ffe6d2;color:#e05a00}.tag.co{background:#e6e6ea;color:#55555d}'+
 '.tot{margin-top:10px;background:#0e0e12;color:#fff;border-radius:24px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap}'+
 '.tot .l span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#a9a9b3;font-weight:500}.tot .l div{font-size:13.5px;color:#c9c9d1;margin-top:4px}.tot .l div.d{color:#6fe39a}'+
 '.tot .big{font-family:"Inter Tight",Inter,sans-serif;font-weight:300;letter-spacing:-.04em;font-size:clamp(36px,10vw,52px);line-height:1}.tot .big i{font-style:normal;color:#ff8a3d;font-size:.45em;letter-spacing:0;font-weight:500;margin-right:.35em}.tot .big.two{font-size:clamp(24px,6.4vw,34px)}'+
@@ -1464,8 +1467,8 @@ async function exportA4(btn){
       var cv=await html2canvas(pages[i],{scale:3,backgroundColor:'#ffffff',logging:false,windowWidth:1200});
       if(i)pdf.addPage();
       pdf.addImage(cv.toDataURL('image/jpeg',0.94),'JPEG',0,0,210,297,undefined,'FAST');
-      var pr=pages[i].getBoundingClientRect(), bl=pages[i].querySelector('.blog');
-      if(bl){var br=bl.getBoundingClientRect(),f=210/794;pdf.link((br.left-pr.left)*f,(br.top-pr.top)*f,br.width*f,br.height*f,{url:'https://blog.redtickets.net/#home'});}
+      var pr=pages[i].getBoundingClientRect(), f=210/794;
+      pages[i].querySelectorAll('[data-href]').forEach(function(bl){var br=bl.getBoundingClientRect();pdf.link((br.left-pr.left)*f,(br.top-pr.top)*f,br.width*f,br.height*f,{url:bl.getAttribute('data-href')})});
     }
     var name=fname('pdf');
     if(await saveFile(name,pdf.output('blob'),'application/pdf'))say('PDF descargado: '+name);
@@ -1477,6 +1480,8 @@ $('pdf').addEventListener('click',function(){exportA4(this)});
 
 /* ============ Link para el productor ============ */
 var BASE_URL='https://mktrt.com/';
+var PROD_URL=BASE_URL;
+var PROD=false;
 var HOSTED=!(window.claude&&window.claude.use)&&/^https?:$/.test(location.protocol);
 function encObj(){
   var o={v:1};['cliente','evento','fecha','validez','duracion','tc','moneda','intro','notas','desc','iva','extras'].forEach(function(k){o[k]=S[k]});
@@ -1596,15 +1601,16 @@ function renderPV(){
   document.body.classList.add('is-pv');
   var ev=S.evento?' para '+S.evento:'';
   document.title='Propuesta de Marketing'+(S.evento?' · '+S.evento:'')+' · RedTickets';
-  var hh='<span class="tagp">Propuesta de Marketing · '+esc(fechaLarga(S.fecha))+'</span><h1>'+(S.evento?'Plan de acciones para <em>'+esc(S.evento)+'</em>':'Tu plan de acciones <em>de marketing</em>')+'</h1>';
-  hh+='<p>'+(S.intro.trim()?esc(S.intro.trim()):'RedTickets contribuirá con acciones de marketing para tu evento, sin costo para vos. Además podés sumar las adicionales que quieras: el total se actualiza al instante.')+'</p><div class="chips2">';
+  var hh=PROD?'<span class="tagp">Marketing para tu evento</span><h1>Sumá acciones de marketing <em>a tu evento</em></h1>':'<span class="tagp">Propuesta de Marketing · '+esc(fechaLarga(S.fecha))+'</span><h1>'+(S.evento?'Plan de acciones para <em>'+esc(S.evento)+'</em>':'Tu plan de acciones <em>de marketing</em>')+'</h1>';
+  hh+='<p>'+(PROD?'Elegí las acciones que quieras para tu evento, ajustá cantidades y enviá tu solicitud. El total se calcula al instante y se descuenta de la liquidación del evento: no pagás nada por adelantado.':S.intro.trim()?esc(S.intro.trim()):'RedTickets contribuirá con acciones de marketing para tu evento, sin costo para vos. Además podés sumar las adicionales que quieras: el total se actualiza al instante.')+'</p><div class="chips2">';
   if(S.cliente)hh+='<span>Preparado para <b>'+esc(S.cliente)+'</b></span>';
   if(S.duracion)hh+='<span>Duración <b>'+esc(S.duracion)+'</b></span>';
   if(S.validez)hh+='<span>Validez <b>'+esc(S.validez)+'</b></span>';
-  hh+='</div><div class="e-cta"><a class="btn" href="#aporte">Ver el aporte de RedTickets</a><a class="btn gh" href="#solicitud">Enviar solicitud</a></div>';
+  hh+='</div><div class="e-cta">'+(PROD?'<a class="btn" href="#acciones">Elegir acciones</a>':'<a class="btn" href="#aporte">Ver el aporte de RedTickets</a>')+'<a class="btn gh" href="#solicitud">Enviar solicitud</a></div>';
   $('ehero').innerHTML=hh;
   $('vista-h').innerHTML='<span class="pill">Vista previa</span><h2>Así queda <em>tu propuesta</em></h2><p>Se actualiza con cada cambio. La podés descargar en PDF desde la barra de abajo.</p>';
-  $('nueva').textContent='Volver a la propuesta inicial';
+  $('nueva').textContent=PROD?'Vaciar selección':'Volver a la propuesta inicial';
+  if(PROD)document.title='Marketing para tu evento · RedTickets';
   var h='<div class="pv"><div class="wrap">';
   h+='<div class="sheet"><div class="in"><span class="obadge">Opcional</span><h2 class="l">Sumá tus píxeles <em>de seguimiento</em></h2><p class="lead l">Si ya tenés tu propio Píxel de Meta o contenedor de Google Tag Manager, dejalo cargado acá para que nuestro equipo lo integre en el tracking de tu campaña. No es obligatorio para avanzar.</p>'+
     '<label class="f"><span>Nombre del evento</span><input type="text" id="px-ev" value="'+esc(S.evento)+'" placeholder="Ej: Show en Antel Arena"></label>'+
@@ -1645,7 +1651,7 @@ function renderPV(){
     if(!m&&!hd&&!bd){msg.textContent='Completá al menos un campo antes de enviar.';return}
     go('mailto:marketing@redtickets.uy?subject='+encodeURIComponent('Píxeles de seguimiento'+(e?' · '+e:''))+'&body='+encodeURIComponent('Evento: '+(e||'A confirmar')+'\n\nID Píxel de Meta: '+(m||'-')+'\n\nGTM Head:\n'+(hd||'-')+'\n\nGTM Body:\n'+(bd||'-')),msg,'abrir el correo');
   });
-  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;e.preventDefault();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
+  document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a||a.id==='to-eq')return;e.preventDefault();var el=document.getElementById(a.getAttribute('href').slice(1));if(el)el.scrollIntoView({behavior:'smooth',block:'start'})});
   buildForm(); update();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(update);
 }
@@ -1674,7 +1680,18 @@ if(mp){
 }else if(m0){
   try{PVSRC=parseCode(m0[1]);S=fromObj(PVSRC);PV=true}catch(e){PV=false}
   if(PV)renderPV();else startEditor();
-}else startEditor();
+}else{
+  var eq=HOSTED?/^\/equipo\/?$/.test(location.pathname):location.hash!=='#productores';
+  if(HOSTED)PROD_URL=location.origin+'/';
+  if(eq){
+    var tp=$('to-prod');tp.href=HOSTED?'/':'#productores';if(!HOSTED)tp.removeAttribute('target');
+    startEditor();
+  }else{
+    PROD=true;PV=true;PVSRC=null;S=base();renderPV();
+    if(!HOSTED){var te=$('to-eq');te.hidden=false;te.href='#equipo'}
+  }
+  if(!HOSTED)window.addEventListener('hashchange',function(){if(location.hash==='#productores'||location.hash==='#equipo')location.reload()});
+}
 </script>
 </body>
 </html>
