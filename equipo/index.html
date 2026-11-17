@@ -1861,7 +1861,7 @@ function renderPV(){
   if(PROD)document.title='Marketing para tu evento · RedTickets';
   var h='<div class="pv"><div class="wrap">';
   h+='<div class="sheet"><div class="in"><span class="obadge">Opcional</span><h2 class="l">Sumá tus píxeles <em>de seguimiento</em></h2><p class="lead l">Si ya tenés tu propio Píxel de Meta o contenedor de Google Tag Manager, dejalo cargado acá para que nuestro equipo lo integre en el tracking de tu campaña. No es obligatorio para avanzar.</p>'+
-    '<label class="f"><span>Nombre del evento</span><input type="text" id="px-ev" value="'+esc(S.evento)+'" placeholder="Ej: Show en Antel Arena"></label>'+
+    '<label class="f"><span>Nombre del evento</span><input type="text" id="px-ev" value="'+esc(S.evento)+'" placeholder="Ej: Show"></label>'+
     '<label class="f"><span>ID Píxel de Meta</span><input type="text" id="px-meta" placeholder="Ej: 123456789012345"></label>'+
     '<label class="f"><span>Google Tag Manager — código Head</span><textarea id="px-head" placeholder="Pegá acá el snippet que va en el &lt;head&gt;"></textarea></label>'+
     '<label class="f"><span>Google Tag Manager — código Body</span><textarea id="px-body" placeholder="Pegá acá el snippet que va en el &lt;body&gt;"></textarea></label>'+
@@ -1869,7 +1869,7 @@ function renderPV(){
   h+='<div class="cta" id="solicitud"><span class="pill">Tu solicitud</span><h2>Revisá tu propuesta <em>y enviala</em></h2><p>Este es el resumen de lo que quedó armado. Completá tus datos y enviá el detalle por email, o escribinos por WhatsApp para coordinarlo.</p>'+
     '<div class="cfields"><label class="f"><span>Nombre y apellido</span><input type="text" id="rq-name" placeholder="Ej: Nombre Apellido"></label>'+
     '<label class="f"><span>Productora</span><input type="text" id="rq-prod" value="'+esc(S.cliente)+'" placeholder="Ej: Productora XYZ"></label>'+
-    '<label class="f"><span>Evento</span><input type="text" id="rq-event" value="'+esc(S.evento)+'" placeholder="Ej: Show en Antel Arena"></label>'+
+    '<label class="f"><span>Evento</span><input type="text" id="rq-event" value="'+esc(S.evento)+'" placeholder="Ej: Show"></label>'+
     '<label class="f"><span>Teléfono de contacto</span><input type="text" id="rq-phone" placeholder="Ej: 099 123 456"></label>'+
     '<label class="f"><span>Email de contacto</span><input type="text" id="rq-email" placeholder="Ej: nombre@productora.com"></label></div><div id="rq-rows"></div>'+
     '<div class="cbtn"><button type="button" class="pbtn" id="rq-mail">Enviar por email</button><button type="button" class="pbtn g" id="rq-wa">Confirmar por WhatsApp</button></div><p class="pnote" id="rq-msg" role="status"></p></div>';
