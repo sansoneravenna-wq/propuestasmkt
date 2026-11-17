@@ -126,6 +126,8 @@ textarea{resize:vertical;min-height:72px}
 .chip.on{background:#0e0e12;border-color:#0e0e12;color:#fff}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pchip{border:1.5px solid var(--line);border-radius:14px;padding:13px 14px;font-size:13px;font-weight:600;background:#fff;cursor:pointer;text-align:left}
+
+.pchip.wide{grid-column:1/-1}
 .pchip.on{border-color:var(--o);background:#fff3ec}
 .dgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .dgrid .chip{border-radius:14px;padding:11px 6px;text-align:center}
@@ -169,6 +171,19 @@ textarea{resize:vertical;min-height:72px}
 @media (max-width:760px){.rtag{align-self:flex-start;margin-top:12px}.e-grid .it{display:flex;flex-direction:column;align-items:stretch;padding:20px}.e-grid .it>.add{margin-top:14px}.e-grid .it>.it-f{grid-template-columns:1fr 64px}.e-grid .it>.it-f .row3{grid-column:1/-1;grid-template-columns:130px 1fr}}
 @media (max-width:900px){.e-nav nav{display:none}.ehero{padding:30px 24px 32px;border-radius:26px}}
 @media (max-width:640px){.e-f2{grid-template-columns:1fr}.sb-btn .btn{padding:9px 12px;font-size:12px}.e-sec{padding-top:48px}}
+@media (max-width:640px){
+.hm{display:none}
+.e-nav{gap:8px}.e-nav #e-logo{max-width:112px;height:auto}.hbtn{gap:6px;flex-wrap:nowrap;min-width:0}.hbtn .btn{padding:9px 13px;font-size:12.5px;white-space:nowrap}
+.sb-in{flex-wrap:wrap;gap:8px;padding-top:9px;padding-bottom:calc(9px + env(safe-area-inset-bottom))}
+.total-mini{width:100%;display:flex;align-items:baseline;justify-content:space-between;gap:10px}.total-mini small{font-size:11px;min-width:0}.total-mini b{font-size:20px}
+.msg{display:none}
+.sb-btn{width:100%;margin:0;flex-wrap:nowrap;gap:6px}.sb-btn .btn{flex:1 1 0;min-width:0;padding:10px 4px;font-size:12px;text-align:center;justify-content:center;white-space:nowrap}
+.csum{padding:14px 16px;font-size:13px}.csum b{font-size:17px}
+.arow b{font-size:19px;min-width:78px}
+.it.calc .it-h b{font-size:22px}
+.gr-row{flex-direction:column;align-items:flex-start!important}
+input,select,textarea{font-size:16px!important}
+}
 /* ---------- preview ---------- */
 .stage{overflow:hidden;min-height:0}
 .pages{transform-origin:top left;width:794px}
@@ -331,6 +346,13 @@ body.no-save #ad-open{display:none!important}
 .hbtn{display:flex;align-items:center;gap:10px}
 .icob{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;flex:none}
 .icob:hover{border-color:#c9c9cf}
+.lg{position:fixed;inset:0;z-index:60;background:rgba(14,14,18,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.lg-c{position:relative;background:#fff;border-radius:26px;padding:30px 26px 26px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.lg-c b{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:24px;letter-spacing:-.03em;display:block}
+.lg-c p{margin:8px 0 18px;color:#55555d;font-size:14px;line-height:1.45}
+.lg-c .btn{width:100%;justify-content:center;margin-top:14px;text-align:center}
+.lg-x{position:absolute;top:14px;right:14px}
+.lg-e{color:#b3261e;font-size:13px;font-weight:600;margin-top:8px}
 .drw{position:fixed;inset:0;z-index:60}
 .drw-bg{position:absolute;inset:0;background:rgba(14,14,18,.45)}
 .drw-p{position:absolute;top:0;right:0;bottom:0;width:min(460px,100%);background:#fff;padding:22px 22px 30px;overflow-y:auto;box-shadow:-10px 0 40px rgba(0,0,0,.18)}
@@ -356,7 +378,7 @@ body.api-on .drw-off{display:none}
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
     <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
-    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver panel de productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a></div>
+    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver <span class="hm">panel de </span>productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a><button class="icob" id="eq-in" type="button" aria-label="Ingreso del equipo de Marketing" title="Ingreso del equipo de Marketing" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn" id="eq-out" type="button" hidden>Salir</button></div>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
     <span class="tagp">Panel de Marketing · uso interno</span>
@@ -849,6 +871,7 @@ body.api-on .drw-off{display:none}
         </p></template>
 <div id="export-stage" aria-hidden="true"></div>
 <div class="ov" id="ov">Generando PDF…</div>
+<div class="lg" id="lg" hidden><form class="lg-c" id="lg-f" autocomplete="off"><button type="button" class="icob lg-x" id="lg-x" aria-label="Cerrar">✕</button><b>Equipo de Marketing</b><p>Ingresá la clave del equipo para armar propuestas y definir qué acciones asume RedTickets.</p><label class="f"><span>Clave</span><input type="password" id="lg-k" autocomplete="off"></label><div class="lg-e" id="lg-e" hidden>La clave no es correcta.</div><button class="btn pri" type="submit">Ingresar</button></form></div>
 
 <script>
 /* ============ Catálogo ============ */
@@ -859,7 +882,7 @@ var GROUPS = [
 var CATALOG = [
  {id:'whatsapp',g:'calc',calc:'tier',n:'Envíos de WhatsApp',d:'Campañas de WhatsApp a bases de datos seleccionadas según el perfil del público objetivo de cada evento.',pd:'Notificación masiva con plantillas aprobadas por Meta.',unit:'mensajes',th:'Cantidad de mensajes',tier:{steps:[100,200,300,400,500,1000],rate:1200},note:'Las bases de datos se seleccionan en función de la segmentación más adecuada para cada evento, considerando afinidad con el tipo de espectáculo, ubicación geográfica e intereses.'},
  {id:'pauta',g:'calc',calc:'pauta',ads:true,n:'Pauta a Medida',d:'Pauta en Meta, Google Ads, LinkedIn Ads o TikTok. Elegí la plataforma, el monto y el tiempo de la campaña.',pd:'Campañas pagas con segmentación, creatividades A/B y reporte.',cur:'UYU'},
- {id:'destacar',g:'calc',calc:'dest',perday:true,n:'Destacá el Evento',d:'Los primeros lugares del home de RedTickets. Elegí la posición y la cantidad de días. Se puede pagar por día o dar 1 entrada, que se destina al sorteo.',pd:'Posición destacada en el home de la web y de la app de RedTickets.'},
+ {id:'destacar',g:'calc',calc:'dest',perday:true,n:'Destacá el Evento',d:'Los primeros lugares del home de RedTickets. Elegí la posición y la cantidad de días. Se puede pagar por día, dar 1 entrada que se destina al sorteo, o dar 1 entrada cada 2 días destacados.',pd:'Posición destacada en el home de la web y de la app de RedTickets.'},
  {id:'email',g:'calc',calc:'tier',n:'Email Marketing',d:'Newsletter segmentada a compradores de eventos similares, con reporte de apertura, clic y conversión.',pd:'Newsletter segmentada, con reporte de apertura, clic y conversión.',unit:'destinatarios',th:'Cantidad de destinatarios',tier:{steps:[100,200,300,400,500,1000],rate:400}},
  {id:'push',g:'calc',calc:'push',n:'Notificación Push',d:'Notificación a través de la App de RedTickets, que llega de forma directa e inmediata a un público masivo interesado en eventos.',pd:'Aviso en la app que impacta a 45 mil personas.',cur:'UYU',precio:306},
  {id:'segmentacion',g:'pauta',n:'Segmentación Específica',d:'Compradores históricos filtrados por edad, ubicación, intereses y categoría de evento.',gratis:true},
@@ -970,9 +993,11 @@ function cuandoHTML(it,cls){
 }
 function priceTxt(def){var it=item(def),o=rowInfo(def);return o.txt+(it.ilim&&it.mode==='valor'?' · cantidad ilimitada':'')}
 function refreshPrice(box,def){var e=box&&box.querySelector('[data-price]');if(e)e.textContent=priceTxt(def)}
+function destCond(it){var q=Math.max(1,Number(it.cant)||1),n=Math.ceil(q/2);return it.cj==='dos'?n+(n===1?' entrada':' entradas')+' (1 cada 2 días destacados)':'1 entrada, que se destina al sorteo'}
 function calcOut(def,it){
   var o={total:mon(valueOf(def,it),it.cur)}, nd=Number(it.dias)||0, m=Number(it.monto)||0, q=Number(it.cant)||1;
-  if(def.calc==='dest'){o.days=q+(q===1?' día':' días');if(!POS[it.pos])o.total='Elegí una posición';else if(it.mode==='canje')o.total='Canje · 1 entrada'}
+  if(def.calc==='tier')o.sends=q+(q===1?' envío':' envíos');
+  if(def.calc==='dest'){o.days=q+(q===1?' día':' días');if(!POS[it.pos])o.total='Elegí una posición';else if(it.mode==='canje'){var ne=it.cj==='dos'?Math.ceil(q/2):1;o.total='Canje · '+ne+(ne===1?' entrada':' entradas')}}
   if(def.calc==='pauta'){o.monto=mon(m,it.cur);o.daily=nd?mon(Math.round(m/nd),it.cur)+' / día':'A definir con la producción'}
   return o;
 }
@@ -985,7 +1010,7 @@ function calcHTML(def){
       return '<tr'+(Number(it.dest)===n?' class="sel"':'')+'><td><i>★</i>'+n.toLocaleString('es-UY')+' '+def.unit+'</td><td class="pr">'+mon(tierPrice(def,n),'UYU')+'</td></tr>'}).join('')+'</tbody></table>';
     if(def.note)L+='<div class="cnote">'+def.note+'</div>';
     R+='<div class="clab">Seleccioná el volumen</div><div class="chips3">'+def.tier.steps.map(function(n){return '<button type="button" class="chip'+(Number(it.dest)===n?' on':'')+'" data-k="dest" data-v="'+n+'">'+n.toLocaleString('es-UY')+'</button>'}).join('')+'</div>';
-    R+='<div class="clab">Cantidad de envíos</div><div class="arow"><input type="range" min="1" max="10" step="1" data-f="cant" value="'+esc(it.cant)+'" aria-label="Cantidad de envíos"><b data-out="sends">'+esc(it.cant)+'</b></div>';
+    R+='<div class="clab">Cantidad de envíos</div><div class="arow"><input type="range" min="1" max="10" step="1" data-f="cant" value="'+esc(it.cant)+'" aria-label="Cantidad de envíos"><b data-out="sends">'+o.sends+'</b></div>';
     R+='<div class="csum"><span>Costo total</span><b data-out="total">'+o.total+'</b></div>';
   }
   if(def.calc==='pauta'){
@@ -997,7 +1022,7 @@ function calcHTML(def){
   }
   if(def.calc==='dest'){
     L+='<div class="clab">Posición destacada</div><div class="posg">'+[1,2,3].map(function(n){var p=POS[n];return '<button type="button" class="posc'+(Number(it.pos)===n?' on':'')+'" data-k="pos" data-v="'+n+'"><b>'+p.r+'</b><span>'+mon(p.p,p.c)+' / día</span></button>'}).join('')+'</div>';
-    R+='<div class="clab">Cómo se abona</div><div class="pgrid"><button type="button" class="pchip'+(it.mode!=='canje'?' on':'')+'" data-k="pay" data-v="valor">Pago por día</button><button type="button" class="pchip'+(it.mode==='canje'?' on':'')+'" data-k="pay" data-v="canje">Canje: 1 entrada para sorteo</button></div>';
+    R+='<div class="clab">Cómo se abona</div><div class="pgrid"><button type="button" class="pchip'+(it.mode!=='canje'?' on':'')+'" data-k="pay" data-v="valor">Pago por día</button><button type="button" class="pchip'+(it.mode==='canje'&&it.cj!=='dos'?' on':'')+'" data-k="pay" data-v="canje">Canje: 1 entrada para sorteo</button><button type="button" class="pchip wide'+(it.mode==='canje'&&it.cj==='dos'?' on':'')+'" data-k="pay" data-v="dos">Canje: 1 entrada cada 2 días destacados</button></div>';
     R+='<div class="clab">Cantidad de días</div><div class="arow"><input type="range" min="1" max="60" step="1" data-f="cant" value="'+esc(it.cant)+'" aria-label="Cantidad de días"><b data-out="days">'+o.days+'</b></div>';
     R+='<div class="csum"><span>Costo total estimado</span><b data-out="total">'+o.total+'</b></div>';
   }
@@ -1103,10 +1128,11 @@ $('form').addEventListener('input',function(e){
   else if(f==='cuandoSel'){var cq=box.querySelector('[data-cuo]');
     if(t.value==='__o'){it.cuo=true;it.cuando='';cq.hidden=false;cq.value='';cq.focus()}else{it.cuo=false;it.cuando=t.value;cq.hidden=true;cq.value=t.value}}
   else if(f){it[f]=t.value;
+    if(def.calc==='dest'&&it.mode==='canje')it.cond=destCond(it);
     if(f==='mode')box.querySelectorAll('[data-show]').forEach(function(l){l.hidden=l.getAttribute('data-show')!==it.mode});}
   if(def.calc&&box.isConnected){
     box.querySelectorAll('[data-f="'+f+'"]').forEach(function(x){if(x!==t&&x.type!=='checkbox')x.value=t.value});
-    var so=box.querySelector('[data-out=sends]');if(so)so.textContent=it.cant;
+    
     applyOut(box,def,it);
   }
   if(box.isConnected&&!def.lock)refreshPrice(box,def);
@@ -1121,7 +1147,7 @@ $('form').addEventListener('click',function(e){
       else{var k=ck.getAttribute('data-k'),v=ck.getAttribute('data-v');
         if(k==='dest'){ci.dest=Number(v);ci.precio=tierPrice(cd,ci.dest);ci.cur='UYU'}
         if(k==='dias'){if(v==='custom'){ci.dcus=true}else{ci.dcus=false;ci.dias=Number(v)}}
-        if(k==='pay'){ci.mode=v;if(v==='canje')ci.cond='1 entrada, que se destina al sorteo'}
+        if(k==='pay'){ci.cj=v==='dos'?'dos':'';ci.mode=v==='valor'?'valor':'canje';if(ci.mode==='canje')ci.cond=destCond(ci)}
         if(k==='pos'){ci.pos=Number(v);ci.precio=POS[ci.pos].p;ci.cur=POS[ci.pos].c}}
       cb.outerHTML=itemHTML(cd);update();}
     return;}
@@ -1264,7 +1290,7 @@ function body3(){
   ['Cobertura TOPIC Media','Producción audiovisual para festivales y shows grandes.'],
   ['Pauta en TikTok Ads','Campañas pagas segmentadas por zona, edad e intereses.'],
   ['PNT en Radios y Streaming','Menciones, entrevistas y pauta en Radio Carve 850 y otras radios.'],
-  ['Eventos Destacados','En el home: pago por día o canje de 1 entrada para sorteo.'],
+  ['Eventos Destacados','En el home: pago por día, canje de 1 entrada para sorteo o 1 entrada cada 2 días.'],
   ['Análisis de Reportes','Tablero semanal con el embudo de impresión a compra.'],
   ['Impresión de Cartelería','Afiches, vinilos, posters y banners, distribuidos en puntos estratégicos.']];
   var h='';
@@ -1686,14 +1712,33 @@ if(mp){
   try{PVSRC=parseCode(m0[1]);S=fromObj(PVSRC);PV=true}catch(e){PV=false}
   if(PV)renderPV();else startEditor();
 }else{
-  var eq=HOSTED?(/^\/equipo(\/|\/index\.html)?$/.test(location.pathname)||location.hash==='#equipo'):location.hash!=='#productores';
+  var EQH='2cd1b03e7960f799d111619341c978ac090e036b65659f7513fec3dbb6bd7f1d', okEq=false; try{okEq=localStorage.getItem('rt-eq-ok')===EQH}catch(e){}
+  var wantEq=/^\/equipo(\/|\/index\.html)?$/.test(location.pathname)||location.hash==='#equipo';
+  var eq=HOSTED?(wantEq&&okEq):location.hash!=='#productores';
   if(HOSTED)PROD_URL=location.origin+'/';
+  function lgOpen(){$('lg').hidden=false;$('lg-e').hidden=true;$('lg-k').value='';setTimeout(function(){$('lg-k').focus()},50)}
+  function goEq(){if(location.hash==='#equipo')location.reload();else{location.href=location.origin+'/#equipo'}}
   if(eq){
     var tp=$('to-prod');tp.href=HOSTED?'/':'#productores';if(!HOSTED)tp.removeAttribute('target');
+    if(HOSTED){var eo=$('eq-out');eo.hidden=false;eo.addEventListener('click',function(){try{localStorage.removeItem('rt-eq-ok')}catch(e){}location.href=location.origin+'/'})}
     startEditor();
   }else{
     PROD=true;PV=true;PVSRC=null;S=base();renderPV();
     if(!HOSTED){var te=$('to-eq');te.hidden=false;te.href='#equipo'}
+    else{
+      $('eq-in').hidden=false;
+      $('eq-in').addEventListener('click',function(){if(okEq)goEq();else lgOpen()});
+      $('lg-x').addEventListener('click',function(){$('lg').hidden=true});
+      $('lg').addEventListener('click',function(e){if(e.target===this)this.hidden=true});
+      $('lg-f').addEventListener('submit',function(e){e.preventDefault();
+        var v=$('lg-k').value.trim();
+        crypto.subtle.digest('SHA-256',new TextEncoder().encode(v)).then(function(b){
+          var h=Array.prototype.map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('');
+          if(h===EQH){try{localStorage.setItem('rt-eq-ok',EQH)}catch(e){}okEq=true;goEq()}else{$('lg-e').hidden=false;$('lg-k').select()}
+        });
+      });
+      if(wantEq)lgOpen();
+    }
   }
   window.addEventListener('hashchange',function(){if(location.hash==='#productores'||location.hash==='#equipo')location.reload()});
 }
