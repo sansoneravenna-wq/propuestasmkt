@@ -352,6 +352,33 @@ body.no-save #ad-open{display:none!important}
 .lg-c p{margin:8px 0 18px;color:#55555d;font-size:14px;line-height:1.45}
 .lg-c .btn{width:100%;justify-content:center;margin-top:14px;text-align:center}
 .lg-x{position:absolute;top:14px;right:14px}
+.pl-c{max-width:720px;max-height:86vh;overflow:auto}
+.pl-t{display:flex;gap:8px;margin:16px 0 14px}
+.pl-i{border:1px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px;display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap}
+.pl-i .pl-d{flex:1;min-width:180px}
+.pl-i .pl-d strong{display:block;font-size:15px;font-weight:600}
+.pl-i .pl-d span{display:block;font-size:12.5px;color:#6b6b73;margin-top:2px}
+.pl-i .pl-tot{font-family:"Inter Tight",Inter,sans-serif;font-size:19px;font-weight:500;white-space:nowrap}
+.pl-paid{display:inline-block!important;font-size:11px!important;font-weight:700;color:#12803a!important;background:#e0f5e7;border-radius:99px;padding:3px 9px;margin-top:6px!important}
+.pl-a{display:flex;gap:6px;flex-wrap:wrap;width:100%}
+.pl-c .pl-a .btn{width:auto;margin:0;padding:8px 13px;font-size:12.5px}
+.ds-k{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.ds-k>div{background:#0e0e12;color:#fff;border-radius:16px;padding:14px}
+.ds-k span{display:block;font-size:11px;color:#a9a9b3}
+.ds-k .ds-k b,.ds-k b{font-size:21px;margin-top:6px;color:#ff8a3d;white-space:nowrap}
+.ds-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin:24px 0 10px}
+.ds-r{margin-bottom:11px}
+.ds-n{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ds-n strong{font-size:14px;font-weight:600}
+.ds-n span{font-size:12px;color:#6b6b73}
+.ds-b{height:8px;border-radius:99px;background:#ececf0;margin-top:5px;overflow:hidden}
+.ds-b i{display:block;height:100%;background:var(--o);border-radius:99px}
+@media (max-width:640px){.ds-k{grid-template-columns:1fr 1fr}.ds-k b{font-size:18px}}
+.pl-e{color:#6b6b73;font-size:14px;padding:18px 0}
+.pl-n{display:block;color:var(--mut);font-size:12px;margin-top:6px}
+#pl-open{display:none}
+@media (max-width:1280px){body:not(.is-pv) #pl-open{display:inline-flex}body:not(.is-pv) .e-nav nav{display:none}}
+.e-nav nav{gap:22px}.e-nav nav a{white-space:nowrap}
 .lg-c label.f{font-size:12px;color:#6b6b73;margin:0}
 .lg-c input[type=password]{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:#fff;font-size:16px;color:var(--ink);font-family:inherit;outline:0}
 .lg-c input[type=password]:focus{border-color:var(--o);box-shadow:0 0 0 3px rgba(255,102,0,.18)}
@@ -380,8 +407,8 @@ body.api-on .drw-off{display:none}
 <div id="ed">
   <header class="e-top"><div class="e-w e-nav">
     <img id="e-logo" alt="RedTickets">
-    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
-    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver <span class="hm">panel de </span>productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a><button class="icob" id="eq-in" type="button" aria-label="Ingreso del equipo de Marketing" title="Ingreso del equipo de Marketing" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn" id="eq-out" type="button" hidden>Salir</button></div>
+    <nav><a class="only-ed" href="#datos">Datos</a><a href="#acciones">Acciones</a><a class="only-ed" href="#valores">Valores</a><a href="#vista">Vista previa</a><a href="#guia-sec">Guía</a><a class="only-ed" href="#pl-r" data-pl="r">Propuestas Realizadas</a><a class="only-ed" href="#pl-p" data-pl="p">Propuestas Pagas</a><a class="only-ed" href="#pl-d" data-pl="d">Dashboard</a><a class="only-pv" href="#solicitud">Enviar solicitud</a></nav>
+    <div class="hbtn"><button class="icob only-ed" id="ad-open" type="button" aria-label="Propuestas y solicitudes" title="Propuestas y solicitudes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="btn pri" id="gen" type="button" hidden>Generar nueva propuesta</button><a class="btn pri only-ed" id="to-prod" target="_blank" rel="noopener">Ver <span class="hm">panel de </span>productores</a><a class="btn" id="to-eq" hidden>Volver al panel de Marketing</a><button class="icob" id="eq-in" type="button" aria-label="Ingreso del equipo de Marketing" title="Ingreso del equipo de Marketing" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></svg></button><button class="icob only-ed" id="pl-open" type="button" data-pl="r" aria-label="Propuestas realizadas y pagas" title="Propuestas realizadas y pagas"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg></button><button class="btn" id="eq-out" type="button" hidden>Salir</button></div>
   </div></header>
   <div class="e-w"><div class="ehero" id="ehero">
     <span class="tagp">Panel de Marketing · uso interno</span>
@@ -874,6 +901,7 @@ body.api-on .drw-off{display:none}
         </p></template>
 <div id="export-stage" aria-hidden="true"></div>
 <div class="ov" id="ov">Generando PDF…</div>
+<div class="lg" id="pl" hidden><div class="lg-c pl-c"><button type="button" class="icob lg-x" id="pl-x" aria-label="Cerrar">✕</button><b>Propuestas</b><div class="pl-t" role="tablist"><button type="button" class="chip" data-tab="r">Realizadas</button><button type="button" class="chip" data-tab="p">Pagas</button><button type="button" class="chip" data-tab="d">Dashboard</button></div><div id="pl-l"></div><small class="pl-n">Se guardan en este navegador cada vez que descargás el PDF de una propuesta.</small></div></div>
 <div class="lg" id="lg" hidden><form class="lg-c" id="lg-f" autocomplete="off"><button type="button" class="icob lg-x" id="lg-x" aria-label="Cerrar">✕</button><b>Equipo de Marketing</b><p>Ingresá la clave del equipo para armar propuestas y definir qué acciones asume RedTickets.</p><label class="f"><span>Clave</span><input type="password" id="lg-k" autocomplete="off"></label><div class="lg-e" id="lg-e" hidden>La clave no es correcta.</div><button class="btn pri" type="submit">Ingresar</button></form></div>
 
 <script>
@@ -1170,7 +1198,7 @@ $('form').addEventListener('change',function(e){
 });
 $('nueva').addEventListener('click',function(){
   if(PV){S=fromObj(PVSRC);buildForm();update();say(PROD?'Selección vaciada.':'Volviste a la propuesta inicial.');return}
-  var b=base(); ['cliente','evento','fecha','validez','duracion','intro','notas','desc'].forEach(function(k){S[k]=b[k]});
+  var b=base(); ['cliente','evento','fecha','validez','duracion','intro','notas','desc'].forEach(function(k){S[k]=b[k]});delete S.pid;
   S.custom.forEach(function(c){delete S.items[c.id]}); S.custom=[];
   for(var id in S.items){S.items[id].on=false;S.items[id].cuando='';S.items[id].cant=1;S.items[id].gratis=false;S.items[id].ilim=false;S.items[id].cuo=false;S.items[id].extra=false}
   buildForm();update();say('Selección vaciada. Los valores cargados y el logo se conservaron.');
@@ -1481,7 +1509,7 @@ async function exportStory(btn){
     say(e&&e.code==='declined'?'Descarga cancelada.':'No se pudo generar el PDF'+(e&&e.message?': '+e.message:'.'));
   }finally{stage.remove();btn.disabled=false;$('ov').classList.remove('on');}
 }
-async function exportA4(btn){
+async function exportA4(btn,nosave){
   if(btn.disabled)return;
   if(!window.html2canvas||!window.jspdf){say('No se pudieron cargar las librerías de PDF. Revisá la conexión y recargá la página.');return;}
   btn.disabled=true; $('ov').classList.add('on'); say('');
@@ -1501,12 +1529,63 @@ async function exportA4(btn){
       pages[i].querySelectorAll('[data-href]').forEach(function(bl){var br=bl.getBoundingClientRect();pdf.link((br.left-pr.left)*f,(br.top-pr.top)*f,br.width*f,br.height*f,{url:bl.getAttribute('data-href')})});
     }
     var name=fname('pdf');
-    if(await saveFile(name,pdf.output('blob'),'application/pdf'))say('PDF descargado: '+name);
+    if(await saveFile(name,pdf.output('blob'),'application/pdf')){say('PDF descargado: '+name);if(!PV&&!nosave)plSave()}
   }catch(e){
     say(e&&e.code==='declined'?'Descarga cancelada.':'No se pudo generar el PDF'+(e&&e.message?': '+e.message:'.'));
   }finally{ex.innerHTML='';btn.disabled=false;$('ov').classList.remove('on');}
 }
 $('pdf').addEventListener('click',function(){exportA4(this)});
+/* ============ Propuestas realizadas y pagas (en este navegador) ============ */
+var PLK='rt-props-v1', PLT='r';
+function plAll(){try{return JSON.parse(localStorage.getItem(PLK)||'[]')||[]}catch(e){return []}}
+function plPut(a){try{localStorage.setItem(PLK,JSON.stringify(a));return true}catch(e){return false}}
+function plSave(){
+  if(!S.pid)S.pid='p'+Date.now();
+  var a=plAll(),c=calc(),old=a.filter(function(x){return x.id===S.pid})[0];
+  var e={id:S.pid,at:Date.now(),paid:!!(old&&old.paid),paidAt:old&&old.paidAt||0,cliente:S.cliente||'',evento:S.evento||'',total:c.rows.length?fmt(c.total):'—',n:c.rows.length,tn:c.total.UYU||0,gn:c.gift.UYU||0,acts:c.rows.map(function(d){return d.n+(d.xof?' · adicional':'')}),st:JSON.parse(JSON.stringify(S))};
+  a=[e].concat(a.filter(function(x){return x.id!==S.pid}));
+  if(!plPut(a)){e.st.logo=null;plPut(a)}
+  save();
+}
+function plDate(t){var d=new Date(t);return String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()}
+function plDraw(){
+  document.querySelectorAll('#pl [data-tab]').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-tab')===PLT)});
+  if(PLT==='d'){$('pl-l').innerHTML=plDash();return}
+  var a=plAll().filter(function(x){return PLT==='p'?x.paid:true});
+  $('pl-l').innerHTML=a.length?a.map(function(x){
+    return '<div class="pl-i" data-id="'+x.id+'"><div class="pl-d"><strong>'+(esc(x.evento)||'Evento sin nombre')+'</strong><span>'+(esc(x.cliente)||'Productora sin nombre')+' · '+x.n+(x.n===1?' acción':' acciones')+' · '+(x.paid&&x.paidAt?'paga el '+plDate(x.paidAt):'generada el '+plDate(x.at))+'</span>'+(x.paid?'<span class="pl-paid">Paga</span>':'')+'</div><div class="pl-tot">'+esc(x.total)+'</div>'+
+      '<div class="pl-a"><button type="button" class="btn or" data-pa="pdf">Descargar PDF</button><button type="button" class="btn" data-pa="open">Abrir y editar</button><button type="button" class="btn" data-pa="paid">'+(x.paid?'Quitar de pagas':'Marcar como paga')+'</button><button type="button" class="btn gh" data-pa="del">Eliminar</button></div></div>'}).join('')
+    :'<div class="pl-e">'+(PLT==='p'?'Todavía no marcaste ninguna propuesta como paga. Hacelo desde "Realizadas" con el botón "Marcar como paga".':'Todavía no hay propuestas. Aparecen acá cuando descargás el PDF de una.')+'</div>';
+}
+function plDash(){
+  var a=plAll(),pg=a.filter(function(x){return x.paid});
+  if(!a.length)return '<div class="pl-e">Todavía no hay datos. El dashboard se arma con las propuestas que vas generando y las que marcás como pagas.</div>';
+  var sum=function(l,k){return l.reduce(function(t,x){return t+(Number(x[k])||0)},0)};
+  var h='<div class="ds-k"><div><span>Propuestas realizadas</span><b>'+a.length+'</b></div><div><span>Propuestas pagas</span><b>'+pg.length+'</b></div><div><span>Monto contratado</span><b>'+mon(sum(pg,'tn'),'UYU')+'</b></div><div><span>Aportó RedTickets</span><b>'+mon(sum(pg,'gn'),'UYU')+'</b></div></div>';
+  var cnt=function(l){var m={};l.forEach(function(x){(x.acts||[]).forEach(function(n){m[n]=(m[n]||0)+1})});return m};
+  var bars=function(rows,max){return rows.map(function(r){return '<div class="ds-r"><div class="ds-n"><strong>'+esc(r[0])+'</strong><span>'+r[2]+'</span></div><div class="ds-b"><i style="width:'+Math.max(3,Math.round(r[1]/max*100))+'%"></i></div></div>'}).join('')};
+  var cp=cnt(pg),ca=cnt(a),names=Object.keys(ca).sort(function(x,y){return (cp[y]||0)-(cp[x]||0)||ca[y]-ca[x]}).slice(0,12);
+  var mx=Math.max.apply(null,names.map(function(n){return Math.max(cp[n]||0,pg.length?0:ca[n])}).concat([1]));
+  h+='<div class="ds-h">Qué es lo que más se pide</div>'+(names.length?bars(names.map(function(n){var v=pg.length?(cp[n]||0):ca[n];return [n,v,(cp[n]||0)+' en pagas · '+ca[n]+' en realizadas']}),mx):'<div class="pl-e">Sin acciones cargadas.</div>');
+  var pr={};a.forEach(function(x){var k=(x.cliente||'').trim()||'Productora sin nombre';pr[k]=pr[k]||{r:0,p:0,t:0};pr[k].r++;if(x.paid){pr[k].p++;pr[k].t+=Number(x.tn)||0}});
+  var pk=Object.keys(pr).sort(function(x,y){return pr[y].t-pr[x].t||pr[y].p-pr[x].p||pr[y].r-pr[x].r}).slice(0,12),pm=Math.max.apply(null,pk.map(function(k){return pr[k].t}).concat([1]));
+  h+='<div class="ds-h">Qué productoras contratan</div>'+bars(pk.map(function(k){var o=pr[k];return [k,o.t,mon(o.t,'UYU')+' · '+o.p+(o.p===1?' paga':' pagas')+' de '+o.r+(o.r===1?' propuesta':' propuestas')]}),pm);
+  return h;
+}
+function plOpen(t){PLT=t||'r';plDraw();$('pl').hidden=false}
+document.addEventListener('click',function(e){var o=e.target.closest('[data-pl]');if(o){e.preventDefault();plOpen(o.getAttribute('data-pl'))}});
+$('pl-x').addEventListener('click',function(){$('pl').hidden=true});
+$('pl').addEventListener('click',async function(e){
+  if(e.target===this){this.hidden=true;return}
+  var tb=e.target.closest('[data-tab]');if(tb){PLT=tb.getAttribute('data-tab');plDraw();return}
+  var b=e.target.closest('[data-pa]');if(!b)return;
+  var id=b.closest('.pl-i').getAttribute('data-id'),a=plAll(),x=a.filter(function(y){return y.id===id})[0];if(!x)return;
+  var k=b.getAttribute('data-pa');
+  if(k==='paid'){x.paid=!x.paid;x.paidAt=x.paid?Date.now():0;plPut(a);plDraw()}
+  else if(k==='del'){if(b.getAttribute('data-sure')){plPut(a.filter(function(y){return y.id!==id}));if(S.pid===id){delete S.pid;save()}plDraw()}else{b.setAttribute('data-sure','1');b.textContent='¿Eliminar? Tocá de nuevo'}}
+  else if(k==='open'){S=JSON.parse(JSON.stringify(x.st));S.pid=x.id;buildForm();update();$('pl').hidden=true;say('Propuesta abierta: '+(x.evento||x.cliente||'sin nombre'));window.scrollTo(0,0)}
+  else if(k==='pdf'){var cur=S;S=JSON.parse(JSON.stringify(x.st));try{await exportA4(b,true)}finally{S=cur}}
+});
 
 /* ============ Link para el productor ============ */
 var BASE_URL='https://mktrt.com/';
