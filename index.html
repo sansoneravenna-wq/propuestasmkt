@@ -1007,7 +1007,7 @@ function calcHTML(def){
   R+='<div class="it-st"></div><div class="it-f">'+cuandoHTML(it,'w2');
   if(def.calc==='pauta')R+='<label class="w2"><span>Monto exacto ($)</span><input type="number" min="0" step="any" data-f="monto" value="'+esc(it.monto)+'"></label>';
   else R+='<label class="w2"><span>'+(def.tier?'Valor por envío':def.perday?'Valor por día':'Valor')+' en $ (editable)</span><input type="number" min="0" step="any" data-f="precio" value="'+esc(it.precio)+'"></label>';
-  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>Lo asume RedTickets: sale con el precio tachado y suma a "Apoya RedTickets".</small></div></div>';
+  R+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado, y suma a "Apoya RedTickets".</small></div></div>';
   R+='<label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n)+' en la propuesta"><span></span></label>';
   return '<div class="it calc'+(it.on?' on':'')+'" data-id="'+def.id+'"><div class="cl">'+L+'</div><div class="cr">'+R+'</div></div>';
 }
@@ -1041,7 +1041,7 @@ function itemHTML(def){
     h+='<label class="span2" data-show="coord"'+(it.mode==='coord'?'':' hidden')+'><span>Valor</span><input type="text" value="Se coordina con Marketing" disabled></label></div>';
   }
   if(def.unlim)h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.ilim?' on':'')+'" data-u="1" aria-pressed="'+(it.ilim?'true':'false')+'">Ilimitado</button><small>La cantidad figura como "Ilimitado" en la propuesta.</small></div>';
-  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Sin costo</button><small>Lo asume RedTickets: sale con el precio tachado y suma a "Apoya RedTickets".</small></div>';
+  h+='<div class="w2 gr-row"><button type="button" class="gr'+(it.gratis?' on':'')+'" data-g="1" aria-pressed="'+(it.gratis?'true':'false')+'">Asume RedTickets</button><small>Sale sin costo para el productor, con el precio tachado, y suma a "Apoya RedTickets".</small></div>';
   if(def.custom) h+='<div class="w2"><button class="x" type="button" data-del="'+def.id+'">Eliminar esta acción personalizada</button></div>';
   h+='</div><label class="add"><input type="checkbox" data-f="on"'+(it.on?' checked':'')+' aria-label="Incluir '+esc(def.n||'acción')+' en la propuesta"><span></span></label></div>';
   return h;
@@ -1080,7 +1080,7 @@ function buildForm(){
   v+='<label class="f"><span>IVA</span><select data-s="iva">'+opts([['none','Sin aclaración'],['inc','Aclarar "IVA inc."'],['nota','Aclarar "valores + IVA"'],['sumar','Sumar IVA 22% al total']],S.iva)+'</select></label></div>';
   v+='<label class="chk"><input type="checkbox" data-s="extras"'+(S.extras?' checked':'')+'><span>Incluir las secciones "Posibilidades de acciones" (Marketing 360°, kit completo, pantallas, alianzas)</span></label></div>';
   $('form').innerHTML=sec('datos','Paso 1','Datos de <em>la propuesta</em>','Para quién es, de qué evento y cualquier texto que quieran sumar a la primera carilla.',d)+
-    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones',PROD?'Acciones':'Acciones adicionales',PROD?'Elegí las acciones <em>para tu evento</em>':'Sumá las adicionales <em>que quieras</em>',PROD?'Usá las calculadoras para definir volúmenes, días y plataformas, y agregá lo que quieras a tu propuesta. Las pantallas se obtienen por canje de entradas y las alianzas se coordinan con el equipo de Marketing.':'Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>de la propuesta</em>','En cada una definís cuándo se hace, la cantidad y el valor. Con "Sin costo" la asume RedTickets; en "Tipo" podés pasarla a canje o a coordinar.',a))+
+    (PV?(ap?sec('aporte','El aporte de RedTickets','RedTickets contribuirá con estas acciones <em>para tu evento</em>','Estas acciones corren por cuenta de RedTickets: no tienen costo para vos. Las que figuran como canje o a coordinar se acuerdan con el equipo de Marketing.',ap):'')+sec('acciones',PROD?'Acciones':'Acciones adicionales',PROD?'Elegí las acciones <em>para tu evento</em>':'Sumá las adicionales <em>que quieras</em>',PROD?'Usá las calculadoras para definir volúmenes, días y plataformas, y agregá lo que quieras a tu propuesta. Las pantallas se obtienen por canje de entradas y las alianzas se coordinan con el equipo de Marketing.':'Además del aporte de RedTickets, podés agregar otras acciones, o sumar más de las que ya están incluidas en otras condiciones (por ejemplo, otro envío de WhatsApp). Estas sí tienen costo y se descuentan de la liquidación del evento; el total se actualiza al instante.',a):sec('acciones','Paso 2','Elegí las acciones <em>de la propuesta</em>','En cada una definís cuándo se hace, la cantidad y el valor. Con "Asume RedTickets" va sin costo para el productor; en "Tipo" podés pasarla a canje o a coordinar.',a))+
     sec('valores','Paso 3','Valores y <em>total</em>','Cómo se muestra el total de la propuesta.',v)+
     '<datalist id="cuando">'+CUANDO.map(function(c){return '<option value="'+c+'">'}).join('')+'</datalist>';
   drawLogoPrev();
@@ -1686,7 +1686,7 @@ if(mp){
   try{PVSRC=parseCode(m0[1]);S=fromObj(PVSRC);PV=true}catch(e){PV=false}
   if(PV)renderPV();else startEditor();
 }else{
-  var eq=HOSTED?/^\/equipo\/?$/.test(location.pathname):location.hash!=='#productores';
+  var eq=HOSTED?(/^\/equipo(\/|\/index\.html)?$/.test(location.pathname)||location.hash==='#equipo'):location.hash!=='#productores';
   if(HOSTED)PROD_URL=location.origin+'/';
   if(eq){
     var tp=$('to-prod');tp.href=HOSTED?'/':'#productores';if(!HOSTED)tp.removeAttribute('target');
@@ -1695,7 +1695,7 @@ if(mp){
     PROD=true;PV=true;PVSRC=null;S=base();renderPV();
     if(!HOSTED){var te=$('to-eq');te.hidden=false;te.href='#equipo'}
   }
-  if(!HOSTED)window.addEventListener('hashchange',function(){if(location.hash==='#productores'||location.hash==='#equipo')location.reload()});
+  window.addEventListener('hashchange',function(){if(location.hash==='#productores'||location.hash==='#equipo')location.reload()});
 }
 </script>
 </body>
