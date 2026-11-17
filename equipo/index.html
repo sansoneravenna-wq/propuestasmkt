@@ -1559,7 +1559,7 @@ async function exportA4(btn,nosave){
       pages[i].querySelectorAll('[data-href]').forEach(function(bl){var br=bl.getBoundingClientRect();pdf.link((br.left-pr.left)*f,(br.top-pr.top)*f,br.width*f,br.height*f,{url:bl.getAttribute('data-href')})});
     }
     var name=fname('pdf');
-    if(await saveFile(name,pdf.output('blob'),'application/pdf')){say('PDF descargado: '+name);if(!PV&&!nosave)plSave()}
+    if(await saveFile(name,pdf.output('blob'),'application/pdf')){say('PDF descargado: '+name);if(!PV&&!nosave)plSave();return true}
   }catch(e){
     say(e&&e.code==='declined'?'Descarga cancelada.':'No se pudo generar el PDF'+(e&&e.message?': '+e.message:'.'));
   }finally{ex.innerHTML='';btn.disabled=false;$('ov').classList.remove('on');}
@@ -1866,7 +1866,7 @@ function renderPV(){
     '<label class="f"><span>Google Tag Manager — código Head</span><textarea id="px-head" placeholder="Pegá acá el snippet que va en el &lt;head&gt;"></textarea></label>'+
     '<label class="f"><span>Google Tag Manager — código Body</span><textarea id="px-body" placeholder="Pegá acá el snippet que va en el &lt;body&gt;"></textarea></label>'+
     '<button type="button" class="pbtn" id="px-send">Enviar píxeles por email</button><p class="pnote" id="px-msg" role="status"></p></div></div>';
-  h+='<div class="cta" id="solicitud"><span class="pill">Tu solicitud</span><h2>Revisá tu propuesta <em>y enviala</em></h2><p>Este es el resumen de lo que quedó armado. Completá tus datos y enviá el detalle por email, o escribinos por WhatsApp para coordinarlo.</p>'+
+  h+='<div class="cta" id="solicitud"><span class="pill">Tu solicitud</span><h2>Revisá tu propuesta <em>y enviala</em></h2><p>Este es el resumen de lo que quedó armado. Completá tus datos y confirmala por email o por WhatsApp: se descarga el PDF de tu propuesta para que lo adjuntes al mensaje.</p>'+
     '<div class="cfields"><label class="f"><span>Nombre y apellido</span><input type="text" id="rq-name" placeholder="Ej: Nombre Apellido"></label>'+
     '<label class="f"><span>Productora</span><input type="text" id="rq-prod" value="'+esc(S.cliente)+'" placeholder="Ej: Productora XYZ"></label>'+
     '<label class="f"><span>Evento</span><input type="text" id="rq-event" value="'+esc(S.evento)+'" placeholder="Ej: Show"></label>'+
@@ -1900,8 +1900,19 @@ function renderPV(){
   $('rq-prod').addEventListener('input',function(){S.cliente=this.value;update()});
   $('rq-event').addEventListener('input',function(){S.evento=this.value;update();var px=$('px-ev');if(px&&!px.getAttribute('data-t'))px.value=this.value});
   $('px-ev').addEventListener('input',function(){this.setAttribute('data-t','1')});
-  $('rq-mail').addEventListener('click',function(){record('email');go('mailto:marketing@redtickets.uy?cc='+encodeURIComponent('lorenzo@redtickets.uy,agustina@redtickets.uy')+'&subject='+encodeURIComponent('Propuesta de Marketing'+ev())+'&body='+encodeURIComponent(order()),$('rq-msg'),'abrir el correo')});
-  $('rq-wa').addEventListener('click',function(){record('whatsapp');var n=$('rq-name').value.trim();go('https://wa.me/59894144031?text='+encodeURIComponent('Hola Lorenzo'+(n?', soy '+n:'')+'. Revisé la propuesta de marketing'+ev()+' y quiero avanzar.\n\n'+order()),$('rq-msg'),'abrir WhatsApp')});
+  var MSGC='Quiero confirmar la siguiente propuesta.';
+  async function confirmar(via,url,btn,txt){
+    var m=$('rq-msg');
+    if(!calc().rows.length){m.textContent='Agregá al menos una acción a tu propuesta antes de confirmarla.';return}
+    var w=null;if(via==='whatsapp'){try{w=window.open('','_blank')}catch(e){}}
+    record(via);m.textContent='Generando el PDF de tu propuesta…';
+    var ok=false;try{ok=await exportA4(btn,true)}catch(e){}
+    m.innerHTML='';var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.textContent=txt;
+    m.appendChild(document.createTextNode(ok?'Se descargó el PDF de tu propuesta: adjuntalo al mensaje antes de enviarlo. Si no se abrió solo, tocá acá: ':'No se pudo generar el PDF; podés descargarlo con el botón "Descargar PDF" y adjuntarlo. Para escribirnos, tocá acá: '));m.appendChild(a);
+    if(w){try{w.opener=null;w.location.href=url}catch(e){}}else if(via==='email'){try{location.href=url}catch(e){}}else{try{window.open(url,'_blank','noopener')}catch(e){}}
+  }
+  $('rq-mail').addEventListener('click',function(){confirmar('email','mailto:marketing@redtickets.uy?cc='+encodeURIComponent('lorenzo@redtickets.uy,agustina@redtickets.uy')+'&subject='+encodeURIComponent('Propuesta de Marketing'+ev())+'&body='+encodeURIComponent(MSGC),this,'abrir el correo')});
+  $('rq-wa').addEventListener('click',function(){confirmar('whatsapp','https://wa.me/59894144031?text='+encodeURIComponent(MSGC),this,'abrir WhatsApp')});
   $('px-send').addEventListener('click',function(){
     var e=$('px-ev').value.trim(),m=$('px-meta').value.trim(),hd=$('px-head').value.trim(),bd=$('px-body').value.trim(),msg=$('px-msg');
     if(!m&&!hd&&!bd){msg.textContent='Completá al menos un campo antes de enviar.';return}
