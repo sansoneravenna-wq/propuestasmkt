@@ -939,10 +939,10 @@ var GROUPS = [
  ['contenido','Contenido y redes'],['cobertura','Cobertura audiovisual'],['medios','Pantallas, radio y vía pública'],['alianzas','Alianzas'],['sorteos','Sorteos']
 ];
 var CATALOG = [
- {id:'whatsapp',g:'calc',calc:'tier',n:'Envíos de WhatsApp',d:'Campañas de WhatsApp a bases de datos seleccionadas según el perfil del público objetivo de cada evento.',pd:'Notificación masiva con plantillas aprobadas por Meta.',unit:'mensajes',th:'Cantidad de mensajes',tier:{steps:[100,200,300,400,500,1000],rate:1200},note:'Las bases de datos se seleccionan en función de la segmentación más adecuada para cada evento, considerando afinidad con el tipo de espectáculo, ubicación geográfica e intereses.'},
+ {id:'whatsapp',g:'calc',calc:'tier',n:'Envíos de WhatsApp',d:'Campañas de WhatsApp a bases de datos seleccionadas según el perfil del público objetivo de cada evento.',pd:'Notificación masiva con plantillas aprobadas por Meta.',unit:'mensajes',th:'Cantidad de mensajes',tier:{steps:[100,200,300,400,500,1000],prices:{100:600,200:1200,300:1800,400:2400,500:2800,1000:5200}},note:'Las bases de datos se seleccionan en función de la segmentación más adecuada para cada evento, considerando afinidad con el tipo de espectáculo, ubicación geográfica e intereses.'},
  {id:'pauta',g:'calc',calc:'pauta',ads:true,n:'Pauta a Medida',d:'Pauta en Meta, Google Ads, LinkedIn Ads o TikTok. Elegí la plataforma, el monto y el tiempo de la campaña.',pd:'Campañas pagas con segmentación, creatividades A/B y reporte.',cur:'UYU'},
  {id:'destacar',g:'calc',calc:'dest',perday:true,n:'Destacá el Evento',d:'Los primeros lugares del home de RedTickets. Elegí la posición y la cantidad de días. Se puede pagar por día, dar 1 entrada que se destina al sorteo, o dar 1 entrada cada 2 días destacados.',pd:'Posición destacada en el home de la web y de la app de RedTickets.'},
- {id:'email',g:'calc',calc:'tier',n:'Email Marketing',d:'Newsletter segmentada a compradores de eventos similares, con reporte de apertura, clic y conversión.',pd:'Newsletter segmentada, con reporte de apertura, clic y conversión.',unit:'destinatarios',th:'Cantidad de destinatarios',tier:{steps:[100,200,300,400,500,1000],rate:400}},
+ {id:'email',g:'calc',calc:'tier',n:'Email Marketing',d:'Newsletter segmentada a compradores de eventos similares, con reporte de apertura, clic y conversión.',pd:'Newsletter segmentada, con reporte de apertura, clic y conversión.',unit:'destinatarios',th:'Cantidad de destinatarios',tier:{steps:[500,1000,1500,2000,4000,6000],prices:{500:300,1000:600,1500:900,2000:1200,4000:2400,6000:3600}}},
  {id:'push',g:'calc',calc:'push',n:'Notificación Push',d:'Notificación a través de la App de RedTickets, que llega de forma directa e inmediata a un público masivo interesado en eventos.',pd:'Aviso en la app que impacta a 45 mil personas.',cur:'UYU',precio:306},
  {id:'segmentacion',g:'pauta',n:'Segmentación Específica',d:'Compradores históricos filtrados por edad, ubicación, intereses y categoría de evento.',gratis:true},
  {id:'reportes',g:'pauta',n:'Análisis de Reportes',d:'Tablero semanal con el embudo completo: impresión, clic, carrito y compra.',gratis:true},
@@ -998,7 +998,7 @@ function item(def){
   if(!it){it=S.items[def.id]={on:!!def.custom,cuando:'',cant:1,precio:def.precio||'',mode:def.mode||'valor',cond:def.cond||'',gratis:!!def.gratis,ilim:!!def.ilim,cur:'UYU'}}
   if(!PV&&it.cur==='USD'){if(it.precio!==''&&it.precio!=null&&!isNaN(it.precio))it.precio=Number(it.precio)*40;if(it.monto!==''&&it.monto!=null&&!isNaN(it.monto))it.monto=Number(it.monto)*40;it.cur='UYU'}
   if(def.tier&&!PV&&it.dest&&!it.on)it.precio=tierPrice(def,it.dest);
-  if(def.tier&&!it.dest){it.dest=100;if(it.precio==='')it.precio=tierPrice(def,100)}
+  if(def.tier&&(!it.dest||def.tier.steps.indexOf(Number(it.dest))<0||it.tv!==2)){if(!it.dest||def.tier.steps.indexOf(Number(it.dest))<0)it.dest=def.tier.steps[0];it.precio=tierPrice(def,it.dest);it.cur='UYU';it.tv=2}
   if(!it.on&&!def.custom&&!PV){
     if(def.precio!=null){it.precio=def.precio;it.cur='UYU'}
     if(def.mode){it.mode=def.mode;it.cond=def.cond||''}
@@ -1017,7 +1017,7 @@ function valueOf(def,it){
   if(def.ads)return Number(it.monto)||0;
   return (Number(it.precio)||0)*(it.ilim?1:(Number(it.cant)||1));
 }
-function tierPrice(def,n){return n/100*def.tier.rate}
+function tierPrice(def,n){var p=def.tier.prices[n];return p==null?0:p}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function mon(n,cur){return (cur==='UYU'?'$ ':'USD ')+Number(n||0).toLocaleString('es-UY',{minimumFractionDigits:0,maximumFractionDigits:2})}
 function norm(a){
